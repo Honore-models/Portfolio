@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <rect width="80" height="80" rx="12" fill="#0A0A23"/>
+  <path d="M40 14c2 8 6 12 10 14-6 2-10 8-10 16 0-8-4-14-10-16 4-2 8-6 10-14z" fill="#fff"/>
+  <path d="M34 48c2 4 4 6 6 10 2-4 4-6 6-10-4 1-6 1-12 0z" fill="#fff" opacity=".85"/>
+  <text x="40" y="70" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="7" font-weight="700">freeCodeCamp</text>
+</svg>

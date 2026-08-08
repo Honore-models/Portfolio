@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <rect width="80" height="80" rx="10" fill="#0B1F3A"/>
+  <rect x="18" y="18" width="44" height="44" rx="8" stroke="#E85D04" stroke-width="3" fill="#122849"/>
+  <text x="40" y="46" text-anchor="middle" fill="#F48C06" font-family="Arial, sans-serif" font-size="18" font-weight="800">AI</text>
+  <text x="40" y="72" text-anchor="middle" fill="#94A3B8" font-family="Arial, sans-serif" font-size="8" font-weight="700">USAII</text>
+</svg>
