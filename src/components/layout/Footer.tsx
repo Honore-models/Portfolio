@@ -74,7 +74,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-6">Follow Me</h3>
+            <h3 className="text-sm font-semibold text-white mb-6">Ready to work with me</h3>
             <SocialTooltip />
           </div>
         </div>
