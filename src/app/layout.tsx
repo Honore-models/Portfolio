@@ -14,10 +14,10 @@ export const metadata: Metadata = {
     "ML Engineer portfolio - building intelligent systems that learn and evolve. Specialized in Machine Learning, Deep Learning, and MLOps.",
   icons: {
     icon: [
-      { url: "/honore_logo1.png", type: "image/png" },
+      { url: "/honore_logo2.png", type: "image/png" },
     ],
-    apple: "/honore_logo1.png",
-    shortcut: "/honore_logo1.png",
+    apple: "/honore_logo2.png",
+    shortcut: "/honore_logo2.png",
   },
 };
 
