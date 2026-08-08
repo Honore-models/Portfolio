@@ -8,7 +8,7 @@ export const site = {
   social: {
     github: "https://github.com/honore-models",
     linkedin: "https://www.linkedin.com/in/niyogushimwa-honore-8427b339a/",
-    twitter: "https://x.com",
+    twitter: "https://x.com/NIYOGUSHIMWAHo1",
     email: "honoreniyogushimwa63@gmail.com",
   },
 };
