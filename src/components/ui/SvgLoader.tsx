@@ -17,7 +17,7 @@ export default function SvgLoader() {
         }
         .svg-frame svg {
           position: absolute;
-          transition: .5s;
+          transition: 0.1s;
           z-index: calc(1 - (0.2 * var(--j)));
           transform-origin: center;
           width: 344px;
@@ -28,28 +28,28 @@ export default function SvgLoader() {
           transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
         }
         .svg-frame svg #center {
-          transition: .5s;
+          transition: 0.1s;
           transform-origin: center;
         }
         .svg-frame:hover svg #center {
           transform: rotate(-30deg) translateX(45px) translateY(-3px);
         }
         #out2 {
-          animation: rotate16 7s ease-in-out infinite alternate;
+          animation: rotate16 2s ease-in-out infinite alternate;
           transform-origin: center;
         }
         #out3 {
-          animation: rotate16 3s ease-in-out infinite alternate;
+          animation: rotate16 2s ease-in-out infinite alternate;
           transform-origin: center;
           stroke: #ff0;
         }
         #inner3, #inner1 {
-          animation: rotate16 4s ease-in-out infinite alternate;
+          animation: rotate16 1s ease-in-out infinite alternate;
           transform-origin: center;
         }
         #center1 {
           fill: #ff0;
-          animation: rotate16 2s ease-in-out infinite alternate;
+          animation: rotate16 1s ease-in-out infinite alternate;
           transform-origin: center;
         }
         @keyframes rotate16 {

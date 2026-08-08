@@ -8,7 +8,7 @@ import {
   Mail,
 } from "lucide-react";
 import { site } from "@/data/content";
-import NeuralEngine from "@/components/ui/NeuralEngine";
+import SvgLoader from "@/components/ui/SvgLoader";
 
 
 
@@ -84,16 +84,14 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right visual — ML Neural Engine */}
+          {/* Right visual — interactive SVG orbit */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[320px] sm:h-[380px] lg:h-[440px] flex items-center justify-center"
+            className="relative flex items-center justify-center h-[360px] sm:h-[420px] lg:h-[480px]"
           >
-            <div className="w-full h-full">
-              <NeuralEngine />
-            </div>
+            <SvgLoader />
           </motion.div>
         </div>
       </div>
