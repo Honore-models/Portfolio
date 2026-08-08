@@ -9,15 +9,15 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Niyogushimwa Honore | Machine Learning Engineer",
+  title: "N.Honore | Machine Learning Engineer",
   description:
     "ML Engineer portfolio - building intelligent systems that learn and evolve. Specialized in Machine Learning, Deep Learning, and MLOps.",
   icons: {
     icon: [
-      { url: "/honore_logo.svg", type: "image/svg+xml" },
-      { url: "/logo.png",        type: "image/png"     },
+      { url: "/honore_logo1.png", type: "image/png" },
     ],
-    apple: "/logo.png",
+    apple: "/honore_logo1.png",
+    shortcut: "/honore_logo1.png",
   },
 };
 

@@ -74,7 +74,7 @@ export const projects = [
     ],
     overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
     image: "/project_images/Screenshot 2026-08-08 155121.png",
-    liveUrl: "#",
+    liveUrl: "https://talvo.onrender.com/",
     sourceUrl: "#",
   },
   {
