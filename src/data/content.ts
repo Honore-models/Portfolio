@@ -60,32 +60,6 @@ export const stackBottom = [
 
 export const projects = [
   {
-    id: 1,
-    category: "NLP",
-    title: "TALVO AI",
-    subtitle: "AI-Powered Recruitment SaaS",
-    description:
-      "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
-    tech: [
-      "Python",
-      "TypeScript",
-      "Next.js",
-      "Django",
-      "Tailwind CSS",
-      "OpenAI",
-      "Qwen",
-    ],
-    metrics: [
-      { value: "94.2%", label: "Screening Accuracy" },
-      { value: "10x", label: "Time Saved" },
-      { value: "1,200+", label: "Candidates Evaluated" },
-    ],
-    overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
-    image: "/project_images/Screenshot 2026-08-08 155121.png",
-    liveUrl: "https://talvo.onrender.com/",
-    sourceUrl: "#",
-  },
-  {
     id: 2,
     category: "NLP",
     title: "SCAM SHIELD AI",
@@ -111,6 +85,34 @@ export const projects = [
     liveUrl: "#",
     sourceUrl: "#",
   },
+
+  {
+    id: 1,
+    category: "NLP",
+    title: "TALVO AI",
+    subtitle: "AI-Powered Recruitment SaaS",
+    description:
+      "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
+    tech: [
+      "Python",
+      "TypeScript",
+      "Next.js",
+      "Django",
+      "Tailwind CSS",
+      "OpenAI",
+      "Qwen",
+    ],
+    metrics: [
+      { value: "94.2%", label: "Screening Accuracy" },
+      { value: "10x", label: "Time Saved" },
+      { value: "1,200+", label: "Candidates Evaluated" },
+    ],
+    overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
+    image: "/project_images/Screenshot 2026-08-08 155121.png",
+    liveUrl: "https://talvo.onrender.com/",
+    sourceUrl: "#",
+  },
+
   {
     id: 3,
     category: "AI Agent",
@@ -258,6 +260,7 @@ export const experience = [
 ];
 
 export const services = [
+  "Large Language Models",
   "Computer Vision",
   "Natural Language Processing",
   "Deep Learning Systems",
