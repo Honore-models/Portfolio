@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { about } from "@/data/content";
-import SvgLoader from "@/components/ui/SvgLoader";
+import SvgLoaderDefault from "@/components/ui/SvgLoaderDefault";
 
 /* Real logos mapped to each skill */
 const skillLogos: Record<string, string> = {
@@ -209,7 +209,7 @@ export default function About() {
                   minHeight: "260px",
                 }}
               >
-                <SvgLoader />
+                <SvgLoaderDefault />
               </div>
 
               <div className="flex gap-1.5 mt-4">
