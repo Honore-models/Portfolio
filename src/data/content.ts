@@ -7,7 +7,7 @@ export const site = {
   tagline: "Building intelligent systems that learn and evolve.",
   social: {
     github: "https://github.com/honore-models",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/niyogushimwa-honore-8427b339a/",
     twitter: "https://x.com",
     email: "honoreniyogushimwa63@gmail.com",
   },
@@ -66,7 +66,7 @@ export const projects = [
     subtitle: "AI-Powered Recruitment SaaS",
     description:
       "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
-    tech: ["TypeScript", "Next.js", "Django", "Tailwind CSS", "OpenAI", "Qwen"],
+    tech: ["Python"],
     metrics: [
       { value: "94.2%", label: "Screening Accuracy" },
       { value: "10x", label: "Time Saved" },
