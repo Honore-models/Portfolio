@@ -14,6 +14,7 @@ import {
   AudioLines,
   Workflow,
 } from "lucide-react";
+import FancyButton from "@/components/ui/FancyButton";
 import Image from "next/image";
 import { projects } from "@/data/content";
 

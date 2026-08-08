@@ -23,15 +23,11 @@ export default function SvgLoader() {
           width: 344px;
           height: 344px;
           fill: none;
-        }
-        .svg-frame:hover svg {
           transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
         }
         .svg-frame svg #center {
           transition: 0.1s;
           transform-origin: center;
-        }
-        .svg-frame:hover svg #center {
           transform: rotate(-30deg) translateX(45px) translateY(-3px);
         }
         #out2 {

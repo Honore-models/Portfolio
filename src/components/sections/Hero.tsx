@@ -2,12 +2,12 @@
 
 import { motion } from "motion/react";
 import {
-  ArrowRight,
   Github,
   Linkedin,
   Mail,
 } from "lucide-react";
 import { site } from "@/data/content";
+import FancyButton from "@/components/ui/FancyButton";
 import SvgLoader from "@/components/ui/SvgLoader";
 
 
@@ -35,13 +35,9 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mb-10">
-              <a
-                href="#projects"
-                className="gradient-btn inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition-all"
-              >
-                Explore My Research & Projects
-                <ArrowRight size={16} />
-              </a>
+              <FancyButton href="#projects" icon>
+                Explore My Research &amp; Projects
+              </FancyButton>
             </div>
 
             <div className="flex items-center gap-3">

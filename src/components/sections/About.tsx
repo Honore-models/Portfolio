@@ -2,22 +2,24 @@
 
 import { motion } from "motion/react";
 import {
-  Brain,
   ChevronDown,
-  Code2,
-  Database,
   GripVertical,
   Info,
-  MessageSquare,
   Plus,
-  Sparkles,
-  Workflow,
 } from "lucide-react";
 import Image from "next/image";
 import { about } from "@/data/content";
 import SvgLoader from "@/components/ui/SvgLoader";
 
-const skillIcons = [Code2, Sparkles, Brain, Database, MessageSquare, Workflow];
+/* Real logos mapped to each skill */
+const skillLogos: Record<string, string> = {
+  "Python":           "/logos/python.svg",
+  "Machine Learning": "/logos/scikit-learn.svg",
+  "Deep Learning":    "/logos/pytorch.svg",
+  "Data Engineering": "/logos/kafka.svg",
+  "NLP":              "/logos/huggingface.svg",
+  "MLOps":            "/logos/mlops.svg",
+};
 
 const toolLogos = [
   { name: "PyTorch",      src: "/logos/pytorch.svg"      },
@@ -246,7 +248,7 @@ export default function About() {
 
               <ul className="space-y-2">
                 {about.skills.map((skill, i) => {
-                  const Icon = skillIcons[i % skillIcons.length];
+                  const logo = skillLogos[skill.name];
                   return (
                     <motion.li
                       key={skill.name}
@@ -263,7 +265,23 @@ export default function About() {
                         borderLeft: "1px solid rgba(255,255,255,0.06)",
                       }}
                     >
-                      <Icon size={17} style={{ color: skill.color }} />
+                      {/* Skill logo */}
+                      <span className="relative w-5 h-5 shrink-0">
+                        {logo ? (
+                          <Image
+                            src={logo}
+                            alt={skill.name}
+                            fill
+                            className="object-contain"
+                            unoptimized
+                          />
+                        ) : (
+                          <span
+                            className="block w-4 h-4 rounded-full"
+                            style={{ background: skill.color }}
+                          />
+                        )}
+                      </span>
                       <span className="flex-1 text-sm font-medium text-white font-mono">
                         {skill.name}
                       </span>
