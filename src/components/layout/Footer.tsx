@@ -1,6 +1,7 @@
 "use client";
 
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import SocialTooltip from "@/components/ui/SocialTooltip";
 import Logo from "@/components/ui/Logo";
 import { navLinks, services, site } from "@/data/content";
 
@@ -73,49 +74,8 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Follow Me</h3>
-            <div className="flex gap-4">
-              {[
-                {
-                  icon: Github,
-                  label: "GitHub",
-                  href: site.social.github,
-                  color: "#94a3b8",
-                },
-                {
-                  icon: Linkedin,
-                  label: "LinkedIn",
-                  href: site.social.linkedin,
-                  color: "#38bdf8",
-                },
-                {
-                  icon: Mail,
-                  label: "Email",
-                  href: site.social.email,
-                  color: "#a855f7",
-                },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target={s.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  className="social-glow flex flex-col items-center gap-2"
-                >
-                  <span
-                    className="flex h-11 w-11 items-center justify-center rounded-full text-white"
-                    style={{
-                      background: `${s.color}22`,
-                      boxShadow: `0 0 20px ${s.color}33`,
-                      border: `1px solid ${s.color}55`,
-                    }}
-                  >
-                    <s.icon size={18} style={{ color: s.color }} />
-                  </span>
-                  <span className="text-[10px] text-slate-500">{s.label}</span>
-                </a>
-              ))}
-            </div>
+            <h3 className="text-sm font-semibold text-white mb-6">Follow Me</h3>
+            <SocialTooltip />
           </div>
         </div>
 
