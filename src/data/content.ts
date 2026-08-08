@@ -66,7 +66,15 @@ export const projects = [
     subtitle: "AI-Powered Recruitment SaaS",
     description:
       "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
-    tech: ["Python"],
+    tech: [
+      "Python",
+      "TypeScript",
+      "Next.js",
+      "Django",
+      "Tailwind CSS",
+      "OpenAI",
+      "Qwen",
+    ],
     metrics: [
       { value: "94.2%", label: "Screening Accuracy" },
       { value: "10x", label: "Time Saved" },
