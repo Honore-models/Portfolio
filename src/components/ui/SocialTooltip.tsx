@@ -192,7 +192,7 @@ export default function SocialTooltip() {
           tabIndex={0}
           aria-label="Follow me on social media"
         >
-          <span className="st-label">Let&apos;s Talk</span>
+          <span className="st-label">Let&apos;s Connect</span>
           {/* Share icon */}
           <svg
             className="st-share-icon"

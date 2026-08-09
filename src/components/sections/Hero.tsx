@@ -24,10 +24,10 @@ export default function Hero() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-10"
           >
-            <p className="text-cyan-400 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-5">
+            <p className="text-cyan-400 text-base text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-5">
               Machine Learning Engineer
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] xl:text-6xl font-bold leading-[1.1] tracking-tight text-white mb-6">
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.4rem] xl:text-6xl font-bold leading-[1.1] tracking-tight text-white mb-6">
               Exploring the Boundary Between Data and Intelligence.
             </h1>
             <p className="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed mb-8">
