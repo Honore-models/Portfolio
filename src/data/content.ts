@@ -114,6 +114,33 @@ export const projects = [
   },
 
   {
+    id: 4,
+    category: "SaaS",
+    title: "Dinely",
+    subtitle: "AI-Powered Restaurant Management SaaS",
+    description:
+      "An AI-powered restaurant management platform designed to help restaurants streamline operations, manage orders and services, and make smarter decisions using intelligent automation.",
+    tech: [
+      "Python",
+      "TypeScript",
+      "Next.js",
+      "Django",
+      "Tailwind CSS",
+      "OpenAI",
+      "Qwen",
+    ],
+    metrics: [
+      { value: "94.2%", label: "Accuracy" },
+      { value: "10x", label: "Time Saved" },
+      { value: "1,200+", label: "Clients Served" },
+    ],
+    overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
+    image: "/project_images/dinely.png",
+    liveUrl: "https://talvo.onrender.com/",
+    sourceUrl: "#",
+  },
+
+  {
     id: 3,
     category: "AI Agent",
     title: "MINESWEEPER AI",
