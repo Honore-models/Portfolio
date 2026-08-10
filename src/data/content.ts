@@ -221,6 +221,16 @@ export const certifications = [
     image: "/certificates/ilead.png",
     logo: "/logos/ilead.png",
   },
+  {
+    id: 7,
+    title: "Deeplearning AI Math4ML",
+    provider: "Deeplearning AI",
+    year: "2026",
+    color: "#7C3AED",
+    accent: "#A78BFA",
+    image: "/certificates/Deeplearning.ai.png",
+    logo: "/logos/deeplogo.png",
+  },
 ];
 
 export const testimonials = [
