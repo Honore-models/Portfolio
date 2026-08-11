@@ -270,9 +270,21 @@ export const testimonials = [
 
 export const experience = [
   {
-    role: "AI & Machine Learning Student",
+    role: "Independent AI / ML Developer",
     company: "Rwanda Coding Academy - Second Year",
-    period: "2026 - Present",
+    period: "2026 - Now",
+    points: [
+      "Designing and developing AI/ML solutions for real-world applications.",
+      "Experimenting with machine learning, deep learning, NLP, computer vision, LLMs, and generative AI.",
+      "Developing and evaluating models through data preprocessing, training, validation, and performance analysis.",
+      "Exploring LLM fine-tuning, RAG pipelines, and AI model deployment.",
+      "Continuously researching emerging AI techniques and applying them through hands-on projects.",
+    ],
+  },
+  {
+    role: "AI & Machine Learning Student",
+    company: "Rwanda Coding Academy - First Year",
+    period: "2025 - 2026",
     points: [
       "Studying the mathematical and computational foundations of Machine Learning and Artificial Intelligence.",
       "Developing practical skills in supervised learning, unsupervised learning, deep learning, NLP, computer vision, and generative AI.",
@@ -280,18 +292,6 @@ export const experience = [
       "Building AI projects that apply machine learning to real-world problems.",
       "Exploring modern AI technologies including Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), model fine-tuning, and speech AI.",
       "Working with frameworks and tools including TensorFlow, Keras, PyTorch, Hugging Face, and Python ML libraries.",
-    ],
-  },
-  {
-    role: "Independent AI / ML Developer",
-    company: "Personal Research & Projects",
-    period: "2025 - 2026",
-    points: [
-      "Designing and developing AI/ML solutions for real-world applications.",
-      "Experimenting with machine learning, deep learning, NLP, computer vision, LLMs, and generative AI.",
-      "Developing and evaluating models through data preprocessing, training, validation, and performance analysis.",
-      "Exploring LLM fine-tuning, RAG pipelines, and AI model deployment.",
-      "Continuously researching emerging AI techniques and applying them through hands-on projects.",
     ],
   },
 ];
