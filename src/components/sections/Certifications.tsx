@@ -2,16 +2,31 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, Image, RoundedBox } from "@react-three/drei";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, createContext, useContext, useRef, useState } from "react";
 import * as THREE from "three";
 import { motion } from "motion/react";
 import { certifications } from "@/data/content";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 type Cert = (typeof certifications)[number];
 
-const CARD_W = 2.2;
-const CARD_H = 2.9;
-const RADIUS = 4.35;
+type CarouselConfig = {
+  cardW: number;
+  cardH: number;
+  radius: number;
+  showHtml: boolean;
+  htmlWidth: number;
+  distanceFactor: number;
+};
+
+const CarouselConfigContext = createContext<CarouselConfig>({
+  cardW: 2.2,
+  cardH: 2.9,
+  radius: 4.35,
+  showHtml: true,
+  htmlWidth: 210,
+  distanceFactor: 1.6,
+});
 
 function CertCard({
   cert,
@@ -26,10 +41,12 @@ function CertCard({
   active: boolean;
   onHover: (i: number | null) => void;
 }) {
+  const { cardW, cardH, radius, showHtml, htmlWidth, distanceFactor } =
+    useContext(CarouselConfigContext);
   const group = useRef<THREE.Group>(null);
   const angle = (index / total) * Math.PI * 2;
-  const x = Math.sin(angle) * RADIUS;
-  const z = Math.cos(angle) * RADIUS;
+  const x = Math.sin(angle) * radius;
+  const z = Math.cos(angle) * radius;
 
   useFrame(() => {
     if (!group.current) return;
@@ -48,9 +65,8 @@ function CertCard({
       }}
       onPointerLeave={() => onHover(null)}
     >
-      {/* Outer glow (behind card, toward center) */}
       <mesh position={[0, 0, -0.06]}>
-        <planeGeometry args={[CARD_W + 0.35, CARD_H + 0.35]} />
+        <planeGeometry args={[cardW + 0.35, cardH + 0.35]} />
         <meshBasicMaterial
           color={cert.color}
           transparent
@@ -60,8 +76,7 @@ function CertCard({
         />
       </mesh>
 
-      {/* Glass card shell */}
-      <RoundedBox args={[CARD_W, CARD_H, 0.08]} radius={0.14} smoothness={8}>
+      <RoundedBox args={[cardW, cardH, 0.08]} radius={0.14} smoothness={8}>
         <meshPhysicalMaterial
           color="#0b1730"
           transparent
@@ -75,65 +90,67 @@ function CertCard({
         />
       </RoundedBox>
 
-      {/* Accent rim */}
-      <mesh position={[0, CARD_H / 2 - 0.04, 0.045]}>
-        <boxGeometry args={[CARD_W - 0.2, 0.035, 0.01]} />
+      <mesh position={[0, cardH / 2 - 0.04, 0.045]}>
+        <boxGeometry args={[cardW - 0.2, 0.035, 0.01]} />
         <meshBasicMaterial color={cert.color} />
       </mesh>
-      <mesh position={[0, -(CARD_H / 2 - 0.04), 0.045]}>
-        <boxGeometry args={[CARD_W - 0.2, 0.035, 0.01]} />
+      <mesh position={[0, -(cardH / 2 - 0.04), 0.045]}>
+        <boxGeometry args={[cardW - 0.2, 0.035, 0.01]} />
         <meshBasicMaterial color={cert.color} />
       </mesh>
 
-      {/* Certificate preview */}
       <Suspense fallback={null}>
-        {/* eslint-disable-next-line jsx-a11y/alt-text -- drei Image renders a WebGL mesh, not a DOM image. */}
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
           url={cert.image}
-          scale={[CARD_W - 0.28, CARD_H - 0.95]}
+          scale={[cardW - 0.28, cardH - 0.95]}
           position={[0, 0.28, 0.05]}
           radius={0.05}
           toneMapped={false}
         />
       </Suspense>
 
-      {/* Issuer logo + meta (HTML overlay for crisp logos) */}
-      <Html
-        transform
-        distanceFactor={1.6}
-        position={[0, -1.08, 0.06]}
-        style={{
-          width: "210px",
-          pointerEvents: "none",
-          userSelect: "none",
-        }}
-      >
-        <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#07111fcc] px-2.5 py-2 backdrop-blur-md font-[family-name:var(--font-outfit)] shadow-lg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={cert.logo}
-            alt={cert.provider}
-            className="h-9 w-9 shrink-0 rounded-md bg-white object-contain p-0.5"
-          />
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-[11px] font-bold leading-tight text-white">
-              {cert.title}
-            </p>
-            <p className="truncate text-[9px] font-medium" style={{ color: cert.accent }}>
-              {cert.provider}
-            </p>
+      {showHtml && (
+        <Html
+          transform
+          distanceFactor={distanceFactor}
+          position={[0, -cardH / 2 + 0.38, 0.06]}
+          style={{
+            width: `${htmlWidth}px`,
+            pointerEvents: "none",
+            userSelect: "none",
+          }}
+        >
+          <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#07111fcc] px-2 py-1.5 backdrop-blur-md font-[family-name:var(--font-outfit)] shadow-lg">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={cert.logo}
+              alt={cert.provider}
+              className="h-8 w-8 shrink-0 rounded-md bg-white object-contain p-0.5"
+            />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[10px] font-bold leading-tight text-white">
+                {cert.title}
+              </p>
+              <p
+                className="truncate text-[8px] font-medium"
+                style={{ color: cert.accent }}
+              >
+                {cert.provider}
+              </p>
+            </div>
+            <span
+              className="shrink-0 rounded-md border px-1 py-0.5 text-[8px] font-bold text-white"
+              style={{
+                borderColor: `${cert.color}88`,
+                background: `${cert.color}33`,
+              }}
+            >
+              {cert.year}
+            </span>
           </div>
-          <span
-            className="shrink-0 rounded-md border px-1.5 py-0.5 text-[9px] font-bold text-white"
-            style={{
-              borderColor: `${cert.color}88`,
-              background: `${cert.color}33`,
-            }}
-          >
-            {cert.year}
-          </span>
-        </div>
-      </Html>
+        </Html>
+      )}
     </group>
   );
 }
@@ -172,12 +189,35 @@ function CarouselRing({
 }
 
 export default function Certifications() {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const [slowed, setSlowed] = useState(false);
   const [hovered, setHovered] = useState<number | null>(null);
   const active = hovered !== null ? certifications[hovered] : null;
 
+  const config: CarouselConfig = isMobile
+    ? {
+        cardW: 1.55,
+        cardH: 2.05,
+        radius: 3.1,
+        showHtml: false,
+        htmlWidth: 160,
+        distanceFactor: 1.2,
+      }
+    : {
+        cardW: 2.2,
+        cardH: 2.9,
+        radius: 4.35,
+        showHtml: true,
+        htmlWidth: 210,
+        distanceFactor: 1.6,
+      };
+
+  const camera = isMobile
+    ? { position: [0, 0.08, 6.8] as [number, number, number], fov: 50 }
+    : { position: [0, 0.15, 9.2] as [number, number, number], fov: 42 };
+
   return (
-    <section id="certifications" className="relative py-20 md:py-28">
+    <section id="certifications" className="relative py-16 sm:py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -185,72 +225,78 @@ export default function Certifications() {
           viewport={{ once: true }}
           className="text-center mb-2"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
             Certifications
           </h2>
-          <p className="mt-3 text-slate-400 text-sm max-w-md mx-auto">
-            Hover any card to pause and inspect. Hover the carousel to slow the rotation.
+          <p className="mt-3 text-slate-400 text-xs sm:text-sm max-w-md mx-auto px-2">
+            {isMobile
+              ? "Tap and drag to explore. Tap a card to pause rotation."
+              : "Hover any card to pause and inspect. Hover the carousel to slow the rotation."}
           </p>
         </motion.div>
 
         <div
-          className="relative h-[480px] sm:h-[540px] md:h-[600px]"
+          className="relative h-[340px] xs:h-[380px] sm:h-[480px] md:h-[540px] lg:h-[600px] touch-pan-y"
           onPointerEnter={() => setSlowed(true)}
           onPointerLeave={() => {
             setSlowed(false);
             setHovered(null);
           }}
         >
-          <div className="pointer-events-none absolute inset-x-[18%] bottom-[18%] h-20 rounded-[100%] bg-cyan-400/10 blur-3xl" />
+          <div className="pointer-events-none absolute inset-x-[10%] sm:inset-x-[18%] bottom-[12%] sm:bottom-[18%] h-16 sm:h-20 rounded-[100%] bg-cyan-400/10 blur-3xl" />
 
-          <Canvas
-            camera={{ position: [0, 0.15, 9.2], fov: 42 }}
-            dpr={[1, 1.75]}
-            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-          >
-            <ambientLight intensity={0.95} />
-            <spotLight
-              position={[4, 3, 8]}
-              angle={0.55}
-              penumbra={0.9}
-              intensity={2.2}
-              color="#9ae6ff"
-            />
-            <pointLight position={[-5, 1.5, 4]} intensity={1.3} color="#a855f7" />
-            <pointLight position={[3, 0.5, 6]} intensity={0.8} color="#38bdf8" />
-            <Suspense fallback={null}>
-              <CarouselRing
-                slowed={slowed}
-                hovered={hovered}
-                setHovered={setHovered}
+          <CarouselConfigContext.Provider value={config}>
+            <Canvas
+              camera={camera}
+              dpr={isMobile ? [1, 1.25] : [1, 1.75]}
+              gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+            >
+              <ambientLight intensity={0.95} />
+              <spotLight
+                position={[4, 3, 8]}
+                angle={0.55}
+                penumbra={0.9}
+                intensity={2.2}
+                color="#9ae6ff"
               />
-            </Suspense>
-          </Canvas>
+              <pointLight position={[-5, 1.5, 4]} intensity={1.3} color="#a855f7" />
+              <pointLight position={[3, 0.5, 6]} intensity={0.8} color="#38bdf8" />
+              <Suspense fallback={null}>
+                <CarouselRing
+                  slowed={slowed}
+                  hovered={hovered}
+                  setHovered={setHovered}
+                />
+              </Suspense>
+            </Canvas>
+          </CarouselConfigContext.Provider>
         </div>
 
-        <div className="min-h-[76px] -mt-6 flex items-center justify-center">
+        <div className="min-h-[88px] sm:min-h-[76px] -mt-4 sm:-mt-6 flex items-center justify-center px-2">
           {active ? (
             <motion.div
               key={active.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex max-w-lg items-center gap-3 rounded-2xl border border-white/10 bg-[#0a1628]/80 px-4 py-3 backdrop-blur-md"
+              className="flex w-full max-w-lg items-center gap-3 rounded-2xl border border-white/10 bg-[#0a1628]/80 px-3 sm:px-4 py-3 backdrop-blur-md"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={active.logo}
                 alt={active.provider}
-                className="h-11 w-11 rounded-lg bg-white object-contain p-1"
+                className="h-10 w-10 sm:h-11 sm:w-11 shrink-0 rounded-lg bg-white object-contain p-1"
               />
-              <div>
-                <p className="text-sm font-semibold text-white">{active.title}</p>
-                <p className="text-xs" style={{ color: active.accent }}>
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm font-semibold text-white truncate">
+                  {active.title}
+                </p>
+                <p className="text-[10px] sm:text-xs truncate" style={{ color: active.accent }}>
                   {active.provider} · {active.year}
                 </p>
               </div>
             </motion.div>
           ) : (
-            <div className="flex flex-wrap items-center justify-center gap-3 opacity-70">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 opacity-80 max-w-full">
               {certifications.map((c) => (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -258,7 +304,7 @@ export default function Certifications() {
                   src={c.logo}
                   alt={c.provider}
                   title={c.provider}
-                  className="h-8 w-8 rounded-md bg-white/90 object-contain p-0.5"
+                  className="h-7 w-7 sm:h-8 sm:w-8 rounded-md bg-white object-contain p-0.5"
                 />
               ))}
             </div>

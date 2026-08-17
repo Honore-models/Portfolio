@@ -110,7 +110,7 @@ function Connector() {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 md:py-28">
+    <section id="about" className="relative py-16 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
         {/* Section heading */}
@@ -291,8 +291,8 @@ export default function About() {
                       >
                         {skill.level}
                       </span>
-                      <ChevronDown size={13} className="text-slate-600" />
-                      <GripVertical size={14} className="text-slate-700" />
+                      <ChevronDown size={13} className="text-slate-600 hidden sm:block" />
+                      <GripVertical size={14} className="text-slate-700 hidden md:block" />
                     </motion.li>
                   );
                 })}

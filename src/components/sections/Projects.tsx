@@ -72,7 +72,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="relative py-20 md:py-28">
+    <section id="projects" className="relative py-16 sm:py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -101,7 +101,7 @@ export default function Projects() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="hud-frame rounded-2xl p-5 sm:p-8 relative overflow-hidden"
+                className="hud-frame rounded-2xl p-4 sm:p-5 md:p-8 relative overflow-hidden"
               >
                 {/* Corner accents */}
                 <div className="pointer-events-none absolute top-3 left-3 h-4 w-4 border-l-2 border-t-2 border-cyan-400/60" />
@@ -140,14 +140,14 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3 mb-6">
+                    <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
                       {project.metrics.map((m, i) => {
                         const Icon = metricIcons[i % metricIcons.length];
                         return (
-                          <div key={m.label} className="text-center sm:text-left">
+                          <div key={m.label} className="text-center sm:text-left min-w-0">
                             <Icon size={14} className="mx-auto sm:mx-0 text-cyan-400 mb-1" />
-                            <p className="text-lg sm:text-xl font-bold text-white">{m.value}</p>
-                            <p className="text-[10px] sm:text-xs text-slate-500">{m.label}</p>
+                            <p className="text-base sm:text-lg md:text-xl font-bold text-white truncate">{m.value}</p>
+                            <p className="text-[9px] sm:text-[10px] md:text-xs text-slate-500 leading-tight">{m.label}</p>
                           </div>
                         );
                       })}

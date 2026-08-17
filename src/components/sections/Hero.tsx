@@ -14,9 +14,9 @@ import SvgLoader from "@/components/ui/SvgLoader";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen pt-24 md:pt-28 pb-16">
+    <section id="home" className="relative min-h-[100svh] pt-20 sm:pt-24 md:pt-28 pb-12 sm:pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-8rem)]">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-center min-h-[calc(100svh-6rem)]">
           {/* Left copy */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -27,7 +27,7 @@ export default function Hero() {
             <p className="text-cyan-400 text-base text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-5">
               Machine Learning Engineer
             </p>
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.4rem] xl:text-6xl font-bold leading-[1.1] tracking-tight text-white mb-6">
+            <h1 className="text-[1.65rem] leading-tight sm:text-4xl lg:text-[3.4rem] xl:text-6xl font-bold tracking-tight text-white mb-5 sm:mb-6">
               Exploring the Boundary Between Data and Intelligence.
             </h1>
             <p className="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed mb-8">
@@ -85,7 +85,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex items-center justify-center h-[360px] sm:h-[420px] lg:h-[480px]"
+            className="relative flex items-center justify-center h-[280px] xs:h-[320px] sm:h-[420px] lg:h-[480px]"
           >
             <SvgLoader />
           </motion.div>

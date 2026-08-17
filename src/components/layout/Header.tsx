@@ -37,9 +37,9 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 md:h-20 items-center justify-between gap-4">
-          <a href="#home" className="flex items-center gap-3 group">
-            <Logo className="w-16 h-16 md:w-20 md:h-20" />
-            <span className="hidden sm:block text-sm md:text-base font-semibold tracking-wide text-white/90 group-hover:text-white transition-colors">
+          <a href="#home" className="flex items-center gap-2 sm:gap-3 group min-w-0">
+            <Logo className="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 shrink-0" />
+            <span className="hidden sm:block text-sm md:text-base font-semibold tracking-wide text-white/90 group-hover:text-white transition-colors truncate">
               {site.name}
             </span>
           </a>

@@ -169,7 +169,7 @@ export const certifications = [
     color: "#00A4EF",
     accent: "#5CC8F5",
     image: "/certificates/microsoft-azure-ai.png",
-    logo: "/logos/microsoft.png",
+    logo: "/logos/microsoft-linkedin.png",
   },
   {
     id: 2,
@@ -179,7 +179,7 @@ export const certifications = [
     color: "#A51C30",
     accent: "#E05A6A",
     image: "/certificates/cs50-ai.png",
-    logo: "/logos/harvard.webp",
+    logo: "/logos/harvard-cs50.png",
   },
   {
     id: 3,
@@ -189,7 +189,7 @@ export const certifications = [
     color: "#0A0A23",
     accent: "#67E8F9",
     image: "/certificates/freecodecamp-python.png",
-    logo: "/logos/FreeCodeCamp_logo.png",
+    logo: "/logos/freecodecamp-seal.png",
   },
   {
     id: 4,

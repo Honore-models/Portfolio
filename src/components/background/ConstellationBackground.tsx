@@ -41,8 +41,10 @@ export default function ConstellationBackground() {
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+      const isMobile = width < 768;
+      const baseCount = isMobile ? 110 : PARTICLE_COUNT;
       const count = Math.round(
-        PARTICLE_COUNT * Math.min(1.35, Math.max(0.75, (width * height) / (1400 * 900)))
+        baseCount * Math.min(1.35, Math.max(0.75, (width * height) / (1400 * 900)))
       );
 
       if (particles.length === 0) {

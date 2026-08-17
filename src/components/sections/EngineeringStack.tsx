@@ -27,20 +27,20 @@ const logoMap: Record<string, string> = {
 function StackPill({ name, accent }: { name: string; accent: string }) {
   const logo = logoMap[name];
   return (
-    <div className="flex shrink-0 items-center gap-3 rounded-2xl border border-white/10 bg-[#0c1a30]/90 px-5 py-3 shadow-[0_0_20px_rgba(0,0,0,0.25)]">
+    <div className="flex shrink-0 items-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border border-white/10 bg-[#0c1a30]/90 px-3 py-2 sm:px-5 sm:py-3 shadow-[0_0_20px_rgba(0,0,0,0.25)]">
       {logo ? (
-        <span className="relative w-5 h-5 shrink-0">
+        <span className="relative w-4 h-4 sm:w-5 sm:h-5 shrink-0">
           <Image src={logo} alt={name} fill className="object-contain" unoptimized />
         </span>
       ) : (
         <span
-          className="h-4 w-4 rounded-full shrink-0"
+          className="h-3 w-3 sm:h-4 sm:w-4 rounded-full shrink-0"
           style={{ background: accent, boxShadow: `0 0 8px ${accent}` }}
         />
       )}
-      <span className="text-sm font-medium text-white whitespace-nowrap">{name}</span>
+      <span className="text-xs sm:text-sm font-medium text-white whitespace-nowrap">{name}</span>
       <span
-        className="ml-1 h-2 w-2 rounded-full shrink-0"
+        className="ml-0.5 sm:ml-1 h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full shrink-0"
         style={{ background: accent, boxShadow: `0 0 10px ${accent}` }}
       />
     </div>
@@ -72,7 +72,7 @@ function MarqueeRow({
 
 export default function EngineeringStack() {
   return (
-    <section id="skills" className="relative py-20 md:py-28 overflow-hidden">
+    <section id="skills" className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
