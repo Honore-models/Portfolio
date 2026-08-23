@@ -60,6 +60,25 @@ export const stackBottom = [
 
 export const projects = [
   {
+    id: 5,
+    category: "NLP",
+    title: "INZIRA AI",
+    subtitle: "AI-Powered Youth Opportunity Platform",
+    description:
+      "An AI-powered platform that connects Rwandan youth seeking opportunities to government funding institutions. Built with Gemma 4, it leverages natural language processing to match users with relevant funding programs and guide them through the application process.",
+    tech: ["TypeScript", "Next.js", "Tailwind CSS", "Gemma 4"],
+    metrics: [
+      { value: "AI", label: "Smart Matching" },
+      { value: "100%", label: "Free Access" },
+      { value: "10x", label: "Faster Discovery" },
+    ],
+    overlay: { title: "AI OPPORTUNITY MATCH", detail: "Funding Program Found" },
+    image: "/project_images/inzira_logo.png",
+    liveUrl: "https://inzira-red.vercel.app/",
+    sourceUrl: "https://github.com/Honore-models/Inzira",
+  },
+
+  {
     id: 2,
     category: "NLP",
     title: "SCAM SHIELD AI",
