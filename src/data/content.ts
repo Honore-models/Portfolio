@@ -1,7 +1,7 @@
 export const site = {
   name: "NIYOGUSHIMWA Honore",
   shortName: "NH",
-  title: "Machine Learning Engineer",
+  title: "AI/ML Engineer",
   email: "honoreniyogushimwa63@gmail.com",
   location: "Kigali, Rwanda",
   tagline: "Building intelligent systems that learn and evolve.",
@@ -24,7 +24,7 @@ export const navLinks = [
 ];
 
 export const about = {
-  bio: "I'm an ML Engineer passionate about building intelligent systems that solve real-world problems. I specialize in machine learning, deep learning, and data engineering to turn data into impactful solutions.",
+  bio: "I'm an AI/ML Engineer passionate about building intelligent systems that solve real-world problems. I specialize in machine learning, deep learning, and data engineering to turn data into impactful solutions.",
   skills: [
     { name: "Python", level: "Expert", color: "#FACC15" },
     { name: "Machine Learning", level: "Expert", color: "#FB923C" },
