@@ -144,7 +144,7 @@ export default function About() {
           </div>
 
           {/* ═══ LEFT COLUMN ═══ */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 lg:pt-24">
             {/* ABOUT_ME card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
