@@ -36,14 +36,12 @@ export const about = {
     { name: "Machine Learning", level: "Advanced", color: "#3178C6" },
   ],
   tools: [
-    "TensorFlow",
     "Git",
     "scikit-learn",
     "Docker",
     "Tailwind CSS",
     "Express.js",
     "PostgreSQL",
-    "Redis",
   ],
 };
 
