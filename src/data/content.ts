@@ -41,7 +41,7 @@ export const about = {
     "scikit-learn",
     "Docker",
     "Tailwind CSS",
-    "Node.js",
+    "Express.js",
     "PostgreSQL",
     "Redis",
   ],

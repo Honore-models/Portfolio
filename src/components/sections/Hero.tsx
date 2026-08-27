@@ -22,9 +22,9 @@ export default function Hero() {
             className="relative z-10"
           >
             <p className="text-cyan-400 text-base text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-5">
-              AI/ML Engineer
+              AI/ML Engineer & Software Developer
             </p>
-            <h1 className="text-[1.65rem] leading-tight sm:text-4xl lg:text-[3.4rem] xl:text-6xl font-bold tracking-tight text-white mb-5 sm:mb-6">
+            <h1 className="text-[1.35rem] leading-snug sm:text-[1.75rem] lg:text-[2.2rem] xl:text-[2.6rem] font-semibold tracking-tight text-white mb-5 sm:mb-6">
               AI/ML Developer & Software Engineer | Building AI-Powered
               Applications & Scalable Systems
             </h1>
