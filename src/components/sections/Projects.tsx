@@ -154,20 +154,24 @@ export default function Projects() {
                     </div>
 
                     <div className="flex flex-wrap gap-3">
-                      <a
-                        href={project.liveUrl}
-                        className="gradient-btn inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white"
-                      >
-                        View Project
-                        <ArrowRight size={14} />
-                      </a>
-                      <a
-                        href={project.sourceUrl}
-                        className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-2.5 text-sm font-medium text-white hover:border-cyan-400/40 hover:bg-white/5 transition-all"
-                      >
-                        <Github size={14} />
-                        Source Code
-                      </a>
+                      {project.liveUrl && project.liveUrl !== "#" && (
+                        <a
+                          href={project.liveUrl}
+                          className="gradient-btn inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white"
+                        >
+                          View Project
+                          <ArrowRight size={14} />
+                        </a>
+                      )}
+                      {project.sourceUrl && project.sourceUrl !== "#" && (
+                        <a
+                          href={project.sourceUrl}
+                          className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-2.5 text-sm font-medium text-white hover:border-cyan-400/40 hover:bg-white/5 transition-all"
+                        >
+                          <Github size={14} />
+                          Source Code
+                        </a>
+                      )}
                     </div>
                   </div>
 
