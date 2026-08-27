@@ -84,7 +84,7 @@ export const projects = [
   {
     id: 1,
     category: "NLP",
-    title: "TALVO AI",
+    title: "TALVO",
     subtitle: "AI-Powered Recruitment SaaS",
     description:
       "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
@@ -103,7 +103,7 @@ export const projects = [
   {
     id: 5,
     category: "NLP",
-    title: "INZIRA AI",
+    title: "INZIRA",
     subtitle: "AI-Powered Youth Opportunity Platform",
     description:
       "An AI-powered platform that connects Rwandan youth seeking opportunities to government funding institutions. Built with Gemma 4, it leverages natural language processing to match users with relevant funding programs and guide them through the application process.",
