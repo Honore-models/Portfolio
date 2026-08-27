@@ -1,39 +1,30 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ChevronDown,
-  GripVertical,
-  Info,
-  Plus,
-} from "lucide-react";
+import { ChevronDown, GripVertical, Info, Plus } from "lucide-react";
 import Image from "next/image";
 import { about } from "@/data/content";
 
-
 /* Real logos mapped to each skill */
 const skillLogos: Record<string, string> = {
-  "Python":           "/logos/python.svg",
+  Python: "/logos/python.svg",
   "Machine Learning": "/logos/scikit-learn.svg",
-  "TypeScript":       "/logos/typescript.svg",
-  "React":            "/logos/react.svg",
-  "Next.js":          "/logos/nextjs.svg",
-  "Java":             "/logos/java.svg",
-  "FastAPI":          "/logos/fastapi.svg",
-  "Express JS":       "/logos/express.svg",
-  "Deep Learning":    "/logos/pytorch.svg",
-  "NLP":              "/logos/huggingface.svg",
+  TypeScript: "/logos/typescript.svg",
+  React: "/logos/react.svg",
+  "Next.js": "/logos/nextjs.svg",
+  Java: "/logos/java.svg",
+  FastAPI: "/logos/fastapi.svg",
+  "Express JS": "/logos/express.svg",
+  "Deep Learning": "/logos/pytorch.svg",
+  NLP: "/logos/huggingface.svg",
 };
 
 const toolLogos = [
-  { name: "PyTorch",      src: "/logos/pytorch.svg"      },
-  { name: "TensorFlow",   src: "/logos/tensorflow.svg"   },
   { name: "scikit-learn", src: "/logos/scikit-learn.svg" },
-  { name: "Docker",       src: "/logos/docker.svg"       },
-  { name: "Tailwind CSS", src: "/logos/tailwindcss.svg"  },
-  { name: "Node.js",      src: "/logos/nodejs.svg"       },
-  { name: "PostgreSQL",   src: "/logos/postgresql.svg"   },
-  { name: "Redis",        src: "/logos/redis.svg"        },
+  { name: "Docker", src: "/logos/docker.svg" },
+  { name: "Tailwind CSS", src: "/logos/tailwindcss.svg" },
+  { name: "Express.js", src: "/logos/express.svg" },
+  { name: "PostgreSQL", src: "/logos/postgresql.svg" },
 ];
 
 /*
@@ -76,13 +67,13 @@ function Connector() {
 
         {/* amber → near-white */}
         <linearGradient id="cg1" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stopColor="#fbbf24" />
+          <stop offset="0%" stopColor="#fbbf24" />
           <stop offset="100%" stopColor="#cbd5e1" />
         </linearGradient>
 
         {/* near-white → cyan (path goes right→left so flip gradient) */}
         <linearGradient id="cg2" x1="1" y1="0" x2="0" y2="0">
-          <stop offset="0%"   stopColor="#cbd5e1" />
+          <stop offset="0%" stopColor="#cbd5e1" />
           <stop offset="100%" stopColor="#22d3ee" />
         </linearGradient>
       </defs>
@@ -117,16 +108,14 @@ function Connector() {
 }
 
 const toolFallbackColors: Record<string, string> = {
-  "Node.js":      "#68A063",
-  "PostgreSQL":   "#336791",
-  "Redis":        "#DC382D",
+  "Node.js": "#68A063",
+  PostgreSQL: "#336791",
 };
 
 export default function About() {
   return (
     <section id="about" className="relative py-16 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
         {/* Section heading */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -139,7 +128,8 @@ export default function About() {
             About Me
           </h2>
           <p className="mt-3 text-slate-400 max-w-xl mx-auto text-sm">
-            A systems-minded ML engineer focused on turning research into reliable production AI.
+            A systems-minded ML engineer focused on turning research into
+            reliable production AI.
           </p>
         </motion.div>
 
@@ -148,7 +138,6 @@ export default function About() {
           position:relative so the connector SVG can overlay the full grid.
         */}
         <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_80px_1fr] items-start">
-
           {/* Full-grid connector overlay (desktop only) */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none z-10">
             <Connector />
@@ -156,7 +145,6 @@ export default function About() {
 
           {/* ═══ LEFT COLUMN ═══ */}
           <div className="flex flex-col gap-5">
-
             {/* ABOUT_ME card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -183,8 +171,11 @@ export default function About() {
               </p>
 
               <div className="flex gap-1.5 mt-5">
-                {[0,1,2].map(i => (
-                  <div key={i} className="h-1.5 w-1.5 rounded-full bg-slate-600" />
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="h-1.5 w-1.5 rounded-full bg-slate-600"
+                  />
                 ))}
               </div>
             </motion.div>
@@ -203,10 +194,20 @@ export default function About() {
               }}
             >
               {/* Corner accent glows */}
-              <div className="pointer-events-none absolute top-0 left-0 w-20 h-20 rounded-tl-2xl"
-                style={{ background: "linear-gradient(135deg, rgba(34,211,238,0.22) 0%, transparent 65%)" }} />
-              <div className="pointer-events-none absolute bottom-0 right-0 w-20 h-20 rounded-br-2xl"
-                style={{ background: "linear-gradient(315deg, rgba(168,85,247,0.22) 0%, transparent 65%)" }} />
+              <div
+                className="pointer-events-none absolute top-0 left-0 w-20 h-20 rounded-tl-2xl"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(34,211,238,0.22) 0%, transparent 65%)",
+                }}
+              />
+              <div
+                className="pointer-events-none absolute bottom-0 right-0 w-20 h-20 rounded-br-2xl"
+                style={{
+                  background:
+                    "linear-gradient(315deg, rgba(168,85,247,0.22) 0%, transparent 65%)",
+                }}
+              />
 
               <div className="flex items-center gap-2 mb-4 relative z-10">
                 <span className="text-xs font-semibold tracking-[0.18em] text-slate-300 uppercase font-mono">
@@ -234,8 +235,11 @@ export default function About() {
               </div>
 
               <div className="flex gap-1.5 mt-4">
-                {[0,1,2].map(i => (
-                  <div key={i} className="h-1.5 w-1.5 rounded-full bg-slate-600" />
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="h-1.5 w-1.5 rounded-full bg-slate-600"
+                  />
                 ))}
               </div>
             </motion.div>
@@ -246,7 +250,6 @@ export default function About() {
 
           {/* ═══ RIGHT COLUMN ═══ */}
           <div className="flex flex-col gap-0 lg:gap-0 lg:mt-8 lg:pl-3">
-
             {/* SKILLS card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -312,30 +315,51 @@ export default function About() {
                       >
                         {skill.level}
                       </span>
-                      <ChevronDown size={13} className="text-slate-600 hidden sm:block" />
-                      <GripVertical size={14} className="text-slate-700 hidden md:block" />
+                      <ChevronDown
+                        size={13}
+                        className="text-slate-600 hidden sm:block"
+                      />
+                      <GripVertical
+                        size={14}
+                        className="text-slate-700 hidden md:block"
+                      />
                     </motion.li>
                   );
                 })}
               </ul>
 
               <div className="flex gap-1.5 mt-5">
-                {[0,1,2].map(i => (
-                  <div key={i} className="h-1.5 w-1.5 rounded-full bg-slate-600" />
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="h-1.5 w-1.5 rounded-full bg-slate-600"
+                  />
                 ))}
               </div>
             </motion.div>
 
             {/* + node connector between SKILLS and TOOLS */}
             <div className="flex flex-col items-center py-1">
-              <div className="h-5 w-px" style={{ background: "linear-gradient(to bottom, rgba(148,163,184,0.4), rgba(148,163,184,0.7))" }} />
+              <div
+                className="h-5 w-px"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(148,163,184,0.4), rgba(148,163,184,0.7))",
+                }}
+              />
               <div
                 className="flex items-center justify-center w-7 h-7 rounded-full border border-slate-500/60 text-slate-400"
                 style={{ background: "rgba(10,22,40,0.95)" }}
               >
                 <Plus size={13} />
               </div>
-              <div className="h-5 w-px" style={{ background: "linear-gradient(to bottom, rgba(148,163,184,0.7), rgba(148,163,184,0.4))" }} />
+              <div
+                className="h-5 w-px"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(148,163,184,0.7), rgba(148,163,184,0.4))",
+                }}
+              />
             </div>
 
             {/* TOOLS & FRAMEWORKS card */}
@@ -370,12 +394,13 @@ export default function About() {
                         unoptimized
                       />
                     </div>
-                    <span className="text-xs text-slate-400 font-mono">{name}</span>
+                    <span className="text-xs text-slate-400 font-mono">
+                      {name}
+                    </span>
                   </div>
                 ))}
               </div>
             </motion.div>
-
           </div>
         </div>
       </div>
