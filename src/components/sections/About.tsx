@@ -15,6 +15,7 @@ const skillLogos: Record<string, string> = {
   Java: "/logos/java.svg",
   FastAPI: "/logos/fastapi.svg",
   "Express JS": "/logos/express.svg",
+  Django: "/logos/django.svg",
   "Deep Learning": "/logos/pytorch.svg",
   NLP: "/logos/huggingface.svg",
 };

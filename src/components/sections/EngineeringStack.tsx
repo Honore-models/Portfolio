@@ -23,6 +23,7 @@ const logoMap: Record<string, string> = {
   Spark:           "/logos/spark.svg",
   FastAPI:         "/logos/fastapi.svg",
   "Express JS":    "/logos/express.svg",
+  Django:          "/logos/django.svg",
   Java:            "/logos/java.svg",
   "Tailwind CSS":  "/logos/tailwindcss.svg",
   JAX:             "/logos/jax.svg",

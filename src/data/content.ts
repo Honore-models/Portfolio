@@ -33,13 +33,14 @@ export const about = {
     { name: "Java", level: "Intermediate", color: "#ED8B00" },
     { name: "FastAPI", level: "Advanced", color: "#009688" },
     { name: "Express JS", level: "Intermediate", color: "#68A063" },
+    { name: "Django", level: "Advanced", color: "#092E20" },
     { name: "Machine Learning", level: "Advanced", color: "#3178C6" },
   ],
   tools: [
     "Git",
     "scikit-learn",
     "Docker",
-    "Tailwind CSS",
+    "Django",
     "Express.js",
     "PostgreSQL",
   ],
@@ -58,6 +59,7 @@ export const stackBottom = [
   { name: "Express JS", accent: "#68A063" },
   { name: "Java", accent: "#ED8B00" },
   { name: "SQL", accent: "#60A5FA" },
+  { name: "Django", accent: "#44B78B" },
   { name: "Docker", accent: "#38BDF8" },
 ];
 
