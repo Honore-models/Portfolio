@@ -9,13 +9,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "N.Honore | Machine Learning Engineer",
+  title: "N.Honore | AI/ML & Software Engineer",
   description:
     "ML Engineer portfolio - building intelligent systems that learn and evolve. Specialized in Machine Learning, Deep Learning, and MLOps.",
   icons: {
-    icon: [
-      { url: "/honore_logo2.png", type: "image/png" },
-    ],
+    icon: [{ url: "/honore_logo2.png", type: "image/png" }],
     apple: "/honore_logo2.png",
     shortcut: "/honore_logo2.png",
   },
