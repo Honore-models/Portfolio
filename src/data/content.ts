@@ -1,10 +1,10 @@
 export const site = {
   name: "NIYOGUSHIMWA Honore",
   shortName: "NH",
-  title: "AI/ML Engineer",
+  title: "AI/ML Engineer and Software Developer",
   email: "honoreniyogushimwa63@gmail.com",
   location: "Kigali, Rwanda",
-  tagline: "Building intelligent systems that learn and evolve.",
+  tagline: "Building intelligent systems and scalable software solutions.",
   social: {
     github: "https://github.com/honore-models",
     linkedin: "https://www.linkedin.com/in/niyogushimwa-honore-8427b339a/",
@@ -24,41 +24,98 @@ export const navLinks = [
 ];
 
 export const about = {
-  bio: "I'm an AI/ML Engineer passionate about building intelligent systems that solve real-world problems. I specialize in machine learning, deep learning, and data engineering to turn data into impactful solutions.",
+  bio: "I'm an AI/ML Engineer and Full-Stack Software Developer passionate about building intelligent systems and scalable software solutions. I specialize in machine learning, deep learning, data engineering, and modern web development to turn ideas into impactful products.",
   skills: [
     { name: "Python", level: "Expert", color: "#FACC15" },
     { name: "Machine Learning", level: "Expert", color: "#FB923C" },
-    { name: "Deep Learning", level: "Advanced", color: "#4ADE80" },
-    { name: "Data Engineering", level: "Advanced", color: "#A78BFA" },
+    { name: "TypeScript", level: "Advanced", color: "#3178C6" },
+    { name: "React", level: "Advanced", color: "#61DAFB" },
+    { name: "Next.js", level: "Advanced", color: "#FFFFFF" },
+    { name: "Java", level: "Intermediate", color: "#ED8B00" },
+    { name: "FastAPI", level: "Advanced", color: "#009688" },
+    { name: "Express JS", level: "Intermediate", color: "#68A063" },
+    { name: "Deep Learning", level: "Intermediate", color: "#60A5FA" },
     { name: "NLP", level: "Advanced", color: "#F472B6" },
-    { name: "MLOps", level: "Intermediate", color: "#60A5FA" },
   ],
-  tools: ["PyTorch", "TensorFlow", "scikit-learn", "Docker"],
+  tools: [
+    "TensorFlow",
+    "Git",
+    "scikit-learn",
+    "Docker",
+    "Tailwind CSS",
+    "Node.js",
+    "PostgreSQL",
+    "Redis",
+  ],
 };
 
 export const stackTop = [
   { name: "MLOps", accent: "#38BDF8" },
   { name: "Python", accent: "#60A5FA" },
+  { name: "TypeScript", accent: "#3178C6" },
+  { name: "React", accent: "#61DAFB" },
+  { name: "Next.js", accent: "#FFFFFF" },
   { name: "PyTorch", accent: "#F97316" },
   { name: "TensorFlow", accent: "#FBBF24" },
   { name: "Hugging Face", accent: "#FACC15" },
-  { name: "Transformers", accent: "#A78BFA" },
-  { name: "Scikit-Learn", accent: "#F472B6" },
   { name: "LangChain", accent: "#34D399" },
 ];
 
 export const stackBottom = [
-  { name: "Ray", accent: "#F87171" },
-  { name: "Airflow", accent: "#38BDF8" },
-  { name: "SQL", accent: "#60A5FA" },
-  { name: "Spark", accent: "#FBBF24" },
   { name: "FastAPI", accent: "#34D399" },
-  { name: "JAX", accent: "#A78BFA" },
-  { name: "OpenCV", accent: "#22D3EE" },
+  { name: "Express JS", accent: "#68A063" },
+  { name: "Java", accent: "#ED8B00" },
+  { name: "SQL", accent: "#60A5FA" },
   { name: "Docker", accent: "#38BDF8" },
+  { name: "Tailwind CSS", accent: "#38BDF8" },
+  { name: "OpenCV", accent: "#22D3EE" },
 ];
 
 export const projects = [
+  {
+    id: 4,
+    category: "SaaS",
+    title: "Dinely",
+    subtitle: "AI-Powered Restaurant Management SaaS",
+    description:
+      "Restaurant management platform designed to help restaurants streamline operations, manage orders and services, and make smarter decisions using intelligent automation.",
+    tech: ["TypeScript", "Next.js", "Tailwind CSS"],
+    metrics: [
+      { value: "94.2%", label: "Accuracy" },
+      { value: "10x", label: "Time Saved" },
+      { value: "1,200+", label: "Clients Served" },
+    ],
+    overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
+    image: "/project_images/dinely.png",
+    liveUrl: "https://dinely5.vercel.app/",
+    sourceUrl: "https://github.com/Honore-models/Dinely",
+  },
+  {
+    id: 1,
+    category: "NLP",
+    title: "TALVO AI",
+    subtitle: "AI-Powered Recruitment SaaS",
+    description:
+      "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
+    tech: [
+      "Python",
+      "TypeScript",
+      "Next.js",
+      "Django",
+      "Tailwind CSS",
+      "OpenAI",
+      "Qwen",
+    ],
+    metrics: [
+      { value: "94.2%", label: "Screening Accuracy" },
+      { value: "10x", label: "Time Saved" },
+      { value: "1,200+", label: "Candidates Evaluated" },
+    ],
+    overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
+    image: "/project_images/Screenshot 2026-08-08 155121.png",
+    liveUrl: "https://talvo.onrender.com/",
+    sourceUrl: "#",
+  },
   {
     id: 5,
     category: "NLP",
@@ -102,60 +159,6 @@ export const projects = [
     overlay: { title: "THREAT DETECTED", detail: "Phishing Attempt Blocked" },
     image: "/project_images/scam_shield.jpg",
     liveUrl: "#",
-    sourceUrl: "#",
-  },
-
-  {
-    id: 1,
-    category: "NLP",
-    title: "TALVO AI",
-    subtitle: "AI-Powered Recruitment SaaS",
-    description:
-      "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
-    tech: [
-      "Python",
-      "TypeScript",
-      "Next.js",
-      "Django",
-      "Tailwind CSS",
-      "OpenAI",
-      "Qwen",
-    ],
-    metrics: [
-      { value: "94.2%", label: "Screening Accuracy" },
-      { value: "10x", label: "Time Saved" },
-      { value: "1,200+", label: "Candidates Evaluated" },
-    ],
-    overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
-    image: "/project_images/Screenshot 2026-08-08 155121.png",
-    liveUrl: "https://talvo.onrender.com/",
-    sourceUrl: "#",
-  },
-
-  {
-    id: 4,
-    category: "SaaS",
-    title: "Dinely",
-    subtitle: "AI-Powered Restaurant Management SaaS",
-    description:
-      "An AI-powered restaurant management platform designed to help restaurants streamline operations, manage orders and services, and make smarter decisions using intelligent automation.",
-    tech: [
-      "Python",
-      "TypeScript",
-      "Next.js",
-      "Django",
-      "Tailwind CSS",
-      "OpenAI",
-      "Qwen",
-    ],
-    metrics: [
-      { value: "94.2%", label: "Accuracy" },
-      { value: "10x", label: "Time Saved" },
-      { value: "1,200+", label: "Clients Served" },
-    ],
-    overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
-    image: "/project_images/dinely.png",
-    liveUrl: "https://talvo.onrender.com/",
     sourceUrl: "#",
   },
 
@@ -320,5 +323,7 @@ export const services = [
   "Computer Vision",
   "Natural Language Processing",
   "Deep Learning Systems",
+  "Full-Stack Web Development",
+  "API Development & Integration",
   "MLOps & Deployment",
 ];

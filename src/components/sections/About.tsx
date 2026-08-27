@@ -15,10 +15,14 @@ import { about } from "@/data/content";
 const skillLogos: Record<string, string> = {
   "Python":           "/logos/python.svg",
   "Machine Learning": "/logos/scikit-learn.svg",
+  "TypeScript":       "/logos/typescript.svg",
+  "React":            "/logos/react.svg",
+  "Next.js":          "/logos/nextjs.svg",
+  "Java":             "/logos/java.svg",
+  "FastAPI":          "/logos/fastapi.svg",
+  "Express JS":       "/logos/express.svg",
   "Deep Learning":    "/logos/pytorch.svg",
-  "Data Engineering": "/logos/kafka.svg",
   "NLP":              "/logos/huggingface.svg",
-  "MLOps":            "/logos/mlops.svg",
 };
 
 const toolLogos = [
@@ -26,6 +30,10 @@ const toolLogos = [
   { name: "TensorFlow",   src: "/logos/tensorflow.svg"   },
   { name: "scikit-learn", src: "/logos/scikit-learn.svg" },
   { name: "Docker",       src: "/logos/docker.svg"       },
+  { name: "Tailwind CSS", src: "/logos/tailwindcss.svg"  },
+  { name: "Node.js",      src: "/logos/nodejs.svg"       },
+  { name: "PostgreSQL",   src: "/logos/postgresql.svg"   },
+  { name: "Redis",        src: "/logos/redis.svg"        },
 ];
 
 /*
@@ -107,6 +115,12 @@ function Connector() {
     </svg>
   );
 }
+
+const toolFallbackColors: Record<string, string> = {
+  "Node.js":      "#68A063",
+  "PostgreSQL":   "#336791",
+  "Redis":        "#DC382D",
+};
 
 export default function About() {
   return (

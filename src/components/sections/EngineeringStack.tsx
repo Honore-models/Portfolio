@@ -8,6 +8,9 @@ import { stackBottom, stackTop } from "@/data/content";
 const logoMap: Record<string, string> = {
   MLOps:           "/logos/mlops.svg",
   Python:          "/logos/python.svg",
+  TypeScript:      "/logos/typescript.svg",
+  React:           "/logos/react.svg",
+  "Next.js":       "/logos/nextjs.svg",
   PyTorch:         "/logos/pytorch.svg",
   TensorFlow:      "/logos/tensorflow.svg",
   "Hugging Face":  "/logos/huggingface.svg",
@@ -19,6 +22,9 @@ const logoMap: Record<string, string> = {
   SQL:             "/logos/sql.svg",
   Spark:           "/logos/spark.svg",
   FastAPI:         "/logos/fastapi.svg",
+  "Express JS":    "/logos/express.svg",
+  Java:            "/logos/java.svg",
+  "Tailwind CSS":  "/logos/tailwindcss.svg",
   JAX:             "/logos/jax.svg",
   OpenCV:          "/logos/opencv.svg",
   Docker:          "/logos/docker.svg",
@@ -81,10 +87,10 @@ export default function EngineeringStack() {
           transition={{ duration: 0.55 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-            ML Engineering Stack
+            Engineering Stack
           </h2>
           <p className="mt-3 text-slate-400 max-w-lg mx-auto">
-            The tools and frameworks powering production-grade AI systems.
+            The tools and frameworks powering production-grade AI and software systems.
           </p>
         </motion.div>
       </div>
