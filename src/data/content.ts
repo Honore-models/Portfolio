@@ -70,6 +70,7 @@ export const projects = [
     description:
       "Restaurant management platform designed to help restaurants streamline operations, manage orders and services, and make smarter decisions using intelligent automation.",
     tech: ["TypeScript", "Next.js", "Tailwind CSS"],
+    status: "In Development",
     metrics: [
       { value: "94.2%", label: "Accuracy" },
       { value: "10x", label: "Time Saved" },
@@ -88,6 +89,7 @@ export const projects = [
     description:
       "An AI-powered recruitment platform designed to help HR teams streamline candidate screening, evaluation, and hiring workflows. Talvo AI combines modern web technologies with large language models to provide intelligent assistance throughout the recruitment process.",
     tech: ["Python", "TypeScript", "Next.js", "Django", "OpenAI", "Qwen"],
+    status: "Production",
     metrics: [
       { value: "94.2%", label: "Screening Accuracy" },
       { value: "10x", label: "Time Saved" },
@@ -106,6 +108,7 @@ export const projects = [
     description:
       "An AI-powered platform that connects Rwandan youth seeking opportunities to government funding institutions. Built with Gemma 4, it leverages natural language processing to match users with relevant funding programs and guide them through the application process.",
     tech: ["TypeScript", "Next.js", "Tailwind CSS", "Gemma 4"],
+    status: "Production",
     metrics: [
       { value: "AI", label: "Smart Matching" },
       { value: "100%", label: "Free Access" },
@@ -115,6 +118,28 @@ export const projects = [
     image: "/project_images/inzira_logo.png",
     liveUrl: "https://inzira-red.vercel.app/",
     sourceUrl: "https://github.com/Honore-models/Inzira",
+  },
+  {
+    id: 6,
+    category: "SaaS",
+    title: "SCOUTS",
+    subtitle: "AI-Powered Product Discovery Platform",
+    description:
+      "An AI-powered product discovery platform that helps developers launch their digital products, reach relevant users through personalized recommendations, receive community feedback, and turn visibility into real user adoption.",
+    tech: ["Next.js", "TypeScript", "Gemma 4"],
+    status: "In Development",
+    metrics: [
+      { value: "AI", label: "Smart Matching" },
+      { value: "100%", label: "Free Access" },
+      { value: "10x", label: "Faster Discovery" },
+    ],
+    overlay: {
+      title: "PRODUCT DISCOVERY",
+      detail: "Recommendation Engine Active",
+    },
+    image: "/scouts.png",
+    liveUrl: "https://scouts11.vercel.app/",
+    sourceUrl: "https://github.com/Honore-models/scouts",
   },
 
   {
@@ -133,6 +158,7 @@ export const projects = [
       "OpenAI",
       "Qwen",
     ],
+    status: "In Development",
     metrics: [
       { value: "98.9%", label: "Detection Rate" },
       { value: "< 150ms", label: "Response Latency" },
@@ -152,6 +178,7 @@ export const projects = [
     description:
       "An AI system designed to play and solve Minesweeper by analyzing the game state, identifying safe moves, and making decisions based on available information. The project demonstrates the application of artificial intelligence and algorithmic reasoning to game environments.",
     tech: ["Python"],
+    status: "In Development",
     metrics: [
       { value: "100%", label: "Win Rate (Easy)" },
       { value: "84.5%", label: "Win Rate (Hard)" },

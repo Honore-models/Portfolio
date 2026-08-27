@@ -112,7 +112,7 @@ export default function Projects() {
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   {/* ── Left: info ── */}
                   <div>
-                    <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center gap-3 mb-4 flex-wrap">
                       <span className="text-xs font-mono text-cyan-400/80">
                         {String(index + 1).padStart(2, "0")} /{" "}
                         {String(projects.length).padStart(2, "0")}
@@ -121,6 +121,18 @@ export default function Projects() {
                         <CatIcon size={12} />
                         {project.category}
                       </span>
+                      {project.status && (
+                        <span className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium ${
+                          project.status === "Production"
+                            ? "border border-emerald-400/30 bg-emerald-400/10 text-emerald-300"
+                            : "border border-amber-400/30 bg-amber-400/10 text-amber-300"
+                        }`}>
+                          <span className={`h-1.5 w-1.5 rounded-full ${
+                            project.status === "Production" ? "bg-emerald-400" : "bg-amber-400"
+                          }`} />
+                          {project.status}
+                        </span>
+                      )}
                     </div>
 
                     <h3 className="text-2xl sm:text-3xl font-bold text-white mb-1">
