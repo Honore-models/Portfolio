@@ -137,7 +137,7 @@ export const projects = [
       title: "PRODUCT DISCOVERY",
       detail: "Recommendation Engine Active",
     },
-    image: "/scouts.png",
+    image: "/project_images/scouts.png",
     liveUrl: "https://scouts11.vercel.app/",
     sourceUrl: "https://github.com/Honore-models/scouts",
   },
