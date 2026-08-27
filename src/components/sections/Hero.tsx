@@ -25,10 +25,11 @@ export default function Hero() {
               AI/ML Engineer
             </p>
             <h1 className="text-[1.65rem] leading-tight sm:text-4xl lg:text-[3.4rem] xl:text-6xl font-bold tracking-tight text-white mb-5 sm:mb-6">
-              Exploring the Boundary Between Data and Intelligence.
+              AI/ML Developer & Software Engineer | Building AI-Powered
+              Applications & Scalable Systems
             </h1>
             <p className="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed mb-8">
-              I experiment, engineer, and deploy machine learning systems that
+              I build and deploy AI/ML systems and scalable software that
               transform patterns hidden in data into useful intelligence.
             </p>
 

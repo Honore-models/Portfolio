@@ -33,8 +33,7 @@ export const about = {
     { name: "Java", level: "Intermediate", color: "#ED8B00" },
     { name: "FastAPI", level: "Advanced", color: "#009688" },
     { name: "Express JS", level: "Intermediate", color: "#68A063" },
-    { name: "Deep Learning", level: "Intermediate", color: "#60A5FA" },
-    { name: "NLP", level: "Advanced", color: "#F472B6" },
+    { name: "Machine Learning", level: "Advanced", color: "#3178C6" },
   ],
   tools: [
     "TensorFlow",
