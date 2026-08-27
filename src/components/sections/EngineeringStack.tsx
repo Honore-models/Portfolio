@@ -9,7 +9,6 @@ const logoMap: Record<string, string> = {
   MLOps: "/logos/mlops.svg",
   Python: "/logos/python.svg",
   TypeScript: "/logos/typescript.svg",
-  React: "/logos/react.svg",
   "Next.js": "/logos/nextjs.svg",
   PyTorch: "/logos/pytorch.svg",
   TensorFlow: "/logos/tensorflow.svg",

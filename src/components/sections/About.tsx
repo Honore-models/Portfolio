@@ -10,7 +10,6 @@ const skillLogos: Record<string, string> = {
   Python: "/logos/python.svg",
   "Machine Learning": "/logos/scikit-learn.svg",
   TypeScript: "/logos/typescript.svg",
-  React: "/logos/react.svg",
   "Next.js": "/logos/nextjs.svg",
   Java: "/logos/java.svg",
   FastAPI: "/logos/fastapi.svg",

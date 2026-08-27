@@ -28,7 +28,6 @@ export const about = {
   skills: [
     { name: "Python", level: "Expert", color: "#FACC15" },
     { name: "TypeScript", level: "Advanced", color: "#3178C6" },
-    { name: "React", level: "Advanced", color: "#61DAFB" },
     { name: "Next.js", level: "Advanced", color: "#FFFFFF" },
     { name: "Java", level: "Intermediate", color: "#ED8B00" },
     { name: "FastAPI", level: "Advanced", color: "#009688" },
@@ -50,7 +49,6 @@ export const stackTop = [
   { name: "MLOps", accent: "#38BDF8" },
   { name: "Python", accent: "#60A5FA" },
   { name: "TypeScript", accent: "#3178C6" },
-  { name: "React", accent: "#61DAFB" },
   { name: "Next.js", accent: "#FFFFFF" },
 ];
 
@@ -68,7 +66,7 @@ export const projects = [
     id: 4,
     category: "SaaS",
     title: "Dinely",
-    subtitle: "AI-Powered Restaurant Management SaaS",
+    subtitle: "Restaurant Management SaaS",
     description:
       "Restaurant management platform designed to help restaurants streamline operations, manage orders and services, and make smarter decisions using intelligent automation.",
     tech: ["TypeScript", "Next.js", "Tailwind CSS"],
