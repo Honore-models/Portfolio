@@ -23,7 +23,7 @@ const skillLogos: Record<string, string> = {
 const toolLogos = [
   { name: "scikit-learn", src: "/logos/scikit-learn.svg" },
   { name: "Docker", src: "/logos/docker.svg" },
-  { name: "Tailwind CSS", src: "/logos/tailwindcss.svg" },
+  { name: "Django", src: "/logos/django.svg" },
   { name: "Express.js", src: "/logos/express.svg" },
   { name: "PostgreSQL", src: "/logos/postgresql.svg" },
 ];
