@@ -24,10 +24,9 @@ export const navLinks = [
 ];
 
 export const about = {
-  bio: "I'm an AI/ML Engineer and Full-Stack Software Developer passionate about building intelligent systems and scalable software solutions. I specialize in machine learning, deep learning, data engineering, and modern web development to turn ideas into impactful products.",
+  bio: "I'm an AI/ML Engineer and Software Developer passionate about building intelligent systems and scalable software solutions. I specialize in machine learning, deep learning, data engineering, and modern web development to turn ideas into impactful products.",
   skills: [
     { name: "Python", level: "Expert", color: "#FACC15" },
-    { name: "Machine Learning", level: "Expert", color: "#FB923C" },
     { name: "TypeScript", level: "Advanced", color: "#3178C6" },
     { name: "React", level: "Advanced", color: "#61DAFB" },
     { name: "Next.js", level: "Advanced", color: "#FFFFFF" },
@@ -55,10 +54,6 @@ export const stackTop = [
   { name: "TypeScript", accent: "#3178C6" },
   { name: "React", accent: "#61DAFB" },
   { name: "Next.js", accent: "#FFFFFF" },
-  { name: "PyTorch", accent: "#F97316" },
-  { name: "TensorFlow", accent: "#FBBF24" },
-  { name: "Hugging Face", accent: "#FACC15" },
-  { name: "LangChain", accent: "#34D399" },
 ];
 
 export const stackBottom = [
@@ -67,8 +62,6 @@ export const stackBottom = [
   { name: "Java", accent: "#ED8B00" },
   { name: "SQL", accent: "#60A5FA" },
   { name: "Docker", accent: "#38BDF8" },
-  { name: "Tailwind CSS", accent: "#38BDF8" },
-  { name: "OpenCV", accent: "#22D3EE" },
 ];
 
 export const projects = [
@@ -114,7 +107,7 @@ export const projects = [
     overlay: { title: "AI EVALUATION COMPLETED", detail: "Top Match Found" },
     image: "/project_images/Screenshot 2026-08-08 155121.png",
     liveUrl: "https://talvo.onrender.com/",
-    sourceUrl: "#",
+    sourceUrl: "https://github.com/Honore-models/umurava-project",
   },
   {
     id: 5,
