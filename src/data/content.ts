@@ -70,7 +70,7 @@ export const projects = [
     description:
       "Restaurant management platform designed to help restaurants streamline operations, manage orders and services, and make smarter decisions using intelligent automation.",
     tech: ["TypeScript", "Next.js", "Tailwind CSS"],
-    status: "In Development",
+    status: "Production",
     metrics: [
       { value: "94.2%", label: "Accuracy" },
       { value: "10x", label: "Time Saved" },
