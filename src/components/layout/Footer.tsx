@@ -4,6 +4,7 @@ import { Mail, MapPin } from "lucide-react";
 import SocialTooltip from "@/components/ui/SocialTooltip";
 import Logo from "@/components/ui/Logo";
 import { navLinks, services, site } from "@/data/content";
+import BackToTop from "@/components/ui/BackToTop";
 
 export default function Footer() {
   return (
@@ -78,6 +79,8 @@ export default function Footer() {
             <SocialTooltip />
           </div>
         </div>
+
+        <BackToTop />
 
         <div className="mt-14 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-600">

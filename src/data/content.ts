@@ -33,6 +33,7 @@ export const about = {
     { name: "FastAPI", level: "Advanced", color: "#009688" },
     { name: "Express JS", level: "Intermediate", color: "#68A063" },
     { name: "Django", level: "Advanced", color: "#092E20" },
+    { name: "Spring Boot", level: "Intermediate", color: "#6DB33F" },
     { name: "Machine Learning", level: "Advanced", color: "#3178C6" },
   ],
   tools: [
@@ -59,6 +60,7 @@ export const stackBottom = [
   { name: "SQL", accent: "#60A5FA" },
   { name: "Django", accent: "#44B78B" },
   { name: "Docker", accent: "#38BDF8" },
+  { name: "Spring Boot", accent: "#6DB33F" },
 ];
 
 export const projects = [
@@ -261,6 +263,16 @@ export const certifications = [
     accent: "#f5cece",
     image: "/certificates/Deeplearning.ai.png",
     logo: "/logos/deeplogo.png",
+  },
+  {
+    id: 8,
+    title: "YIMO Certificate",
+    provider: "YIMO",
+    year: "2026",
+    color: "#2563EB",
+    accent: "#60A5FA",
+    image: "/certificates/YIMO_Certificate.jpg",
+    logo: "/logos/yimo.png",
   },
 ];
 

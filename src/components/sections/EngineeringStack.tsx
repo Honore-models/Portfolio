@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { stackBottom, stackTop } from "@/data/content";
+import BackToTop from "@/components/ui/BackToTop";
 
 /* Map stack item names → logo paths in /public/logos/ */
 const logoMap: Record<string, string> = {
@@ -20,6 +21,7 @@ const logoMap: Record<string, string> = {
   "Express JS": "/logos/express.svg",
   Django: "/logos/django.svg",
   Docker: "/logos/docker.svg",
+  "Spring Boot": "/logos/spring_boot.svg",
 };
 
 function StackPill({ name, accent }: { name: string; accent: string }) {
@@ -109,6 +111,8 @@ export default function EngineeringStack() {
         <MarqueeRow items={stackTop} direction="left" />
         <MarqueeRow items={stackBottom} direction="right" />
       </div>
+
+      <BackToTop />
     </section>
   );
 }
