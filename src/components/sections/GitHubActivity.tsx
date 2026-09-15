@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 import { Github, LoaderCircle } from "lucide-react";
 import { site } from "@/data/content";
 
 type Contribution = { date: string; count: number; level: number };
-type Activity = { username: string; total: number; contributions: Contribution[] };
+type Activity = { username: string; total: number; year: string; contributions: Contribution[] };
 
 const levelClasses = [
   "bg-cyan-950/70",
@@ -25,13 +25,29 @@ function formatDate(date: string) {
 }
 
 export default function GitHubActivity() {
+  const currentYear = new Date().getFullYear();
+  const years = [currentYear, currentYear - 1];
+  const [selectedYear, setSelectedYear] = useState(currentYear);
   const [activity, setActivity] = useState<Activity | null>(null);
   const [error, setError] = useState(false);
 
+  const chart = useMemo(() => {
+    if (!activity) return null;
+    const weeks = Math.ceil(activity.contributions.length / 7);
+    const months = activity.contributions.flatMap((day, index) => {
+      const date = new Date(`${day.date}T00:00:00`);
+      if (date.getDate() !== 1 && index !== 0) return [];
+      return [{ label: new Intl.DateTimeFormat("en", { month: "short" }).format(date), week: Math.floor(index / 7) + 1 }];
+    });
+    return { weeks, months };
+  }, [activity]);
+
   useEffect(() => {
     const controller = new AbortController();
+    setActivity(null);
+    setError(false);
 
-    fetch("/api/github-contributions", { signal: controller.signal })
+    fetch(`/api/github-contributions?year=${selectedYear}`, { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Activity request failed");
         return response.json();
@@ -42,16 +58,16 @@ export default function GitHubActivity() {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [selectedYear]);
 
   return (
-    <section id="activity" className="relative py-20 md:py-28">
+    <section id="activity" className="relative py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 text-center"
+          className="mb-7 text-center"
         >
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1 text-xs font-medium text-cyan-300">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]" />
@@ -70,16 +86,16 @@ export default function GitHubActivity() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="glass-panel mx-auto max-w-6xl rounded-2xl p-5 sm:p-7"
+          className="glass-panel mx-auto max-w-6xl rounded-2xl p-5 sm:p-6"
         >
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-300">
                 <Github size={21} />
               </div>
               <div>
                 <p className="font-semibold text-white">{activity ? `@${activity.username}` : "GitHub activity"}</p>
-                <p className="text-sm text-slate-400">{activity ? `${activity.total.toLocaleString()} contributions in the last year` : "Fetching latest contributions…"}</p>
+                <p className="text-sm text-slate-400">{activity ? `${activity.total.toLocaleString()} contributions in ${selectedYear}` : `Fetching ${selectedYear} activity…`}</p>
               </div>
             </div>
             <a href={site.social.github} target="_blank" rel="noreferrer" className="text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-100">
@@ -87,27 +103,41 @@ export default function GitHubActivity() {
             </a>
           </div>
 
-          {activity ? (
-            <div className="overflow-x-auto pb-2">
-              <div className="min-w-[720px]">
-                <div className="mb-2 ml-8 flex justify-between text-[11px] text-slate-500">
-                  <span>Less</span><span>More</span>
-                </div>
-                <div className="flex gap-2">
-                  <div className="grid grid-rows-7 gap-1 pt-0.5 text-[10px] text-slate-500">
-                    <span /><span>Mon</span><span /><span>Wed</span><span /><span>Fri</span><span />
+          {activity && chart ? (
+            <div className="flex flex-col gap-4 lg:flex-row">
+              <div className="min-w-0 flex-1 overflow-x-auto pb-2">
+                <div className="min-w-[720px]">
+                  <div className="ml-8 grid h-4 text-[11px] text-slate-400" style={{ gridTemplateColumns: `repeat(${chart.weeks}, 12px)`, columnGap: "4px" }}>
+                    {chart.months.map((month) => <span key={`${month.label}-${month.week}`} style={{ gridColumnStart: month.week }}>{month.label}</span>)}
                   </div>
-                  <div className="grid grid-flow-col grid-rows-7 gap-1">
-                    {activity.contributions.map((day) => (
-                      <div
-                        key={day.date}
-                        title={`${formatDate(day.date)}: ${day.count} contribution${day.count === 1 ? "" : "s"}`}
-                        aria-label={`${formatDate(day.date)}: ${day.count} contribution${day.count === 1 ? "" : "s"}`}
-                        className={`h-3 w-3 rounded-[3px] transition-transform hover:scale-125 ${levelClasses[day.level] ?? levelClasses[0]}`}
-                      />
-                    ))}
+                  <div className="mt-1 flex gap-2">
+                    <div className="grid grid-rows-7 gap-1 pt-0.5 text-[10px] text-slate-500">
+                      <span /><span>Mon</span><span /><span>Wed</span><span /><span>Fri</span><span />
+                    </div>
+                    <div className="grid grid-flow-col grid-rows-7 gap-1">
+                      {activity.contributions.map((day) => (
+                        <div
+                          key={day.date}
+                          title={`${formatDate(day.date)}: ${day.count} contribution${day.count === 1 ? "" : "s"}`}
+                          aria-label={`${formatDate(day.date)}: ${day.count} contribution${day.count === 1 ? "" : "s"}`}
+                          className={`h-3 w-3 rounded-[3px] transition-transform hover:scale-125 ${levelClasses[day.level] ?? levelClasses[0]}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center justify-end gap-1.5 text-xs text-slate-500">
+                    <span>Less</span>
+                    {levelClasses.map((color, index) => <span key={index} className={`h-3 w-3 rounded-[3px] ${color}`} />)}
+                    <span>More</span>
                   </div>
                 </div>
+              </div>
+              <div className="flex gap-2 border-t border-white/10 pt-4 lg:flex-col lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
+                {years.map((year) => (
+                  <button key={year} type="button" onClick={() => setSelectedYear(year)} className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${selectedYear === year ? "bg-cyan-500 text-slate-950" : "text-slate-400 hover:bg-white/5 hover:text-white"}`} aria-pressed={selectedYear === year}>
+                    {year}
+                  </button>
+                ))}
               </div>
             </div>
           ) : (

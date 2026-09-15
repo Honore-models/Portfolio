@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 
 const username = "honore-models";
-const sourceUrl = `https://github-contributions-api.jogruber.de/v4/${username}?y=last`;
+const contributionApi = `https://github-contributions-api.jogruber.de/v4/${username}`;
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const response = await fetch(sourceUrl, {
+    const requestedYear = new URL(request.url).searchParams.get("year");
+    const year = requestedYear && /^20\d{2}$/.test(requestedYear)
+      ? requestedYear
+      : "last";
+    const response = await fetch(`${contributionApi}?y=${year}`, {
       next: { revalidate: 3600 },
       headers: { Accept: "application/json" },
     });
@@ -33,6 +37,7 @@ export async function GET() {
     return NextResponse.json(
       {
         username,
+        year,
         total: contributions.reduce((sum: number, day: { count: number }) => sum + day.count, 0),
         contributions,
       },
