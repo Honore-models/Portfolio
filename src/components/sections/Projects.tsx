@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { projects } from "@/data/content";
-import BackToTop from "@/components/ui/BackToTop";
 
 const categoryIcons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   "Computer Vision": Eye,
@@ -304,7 +303,6 @@ export default function Projects() {
           })}
         </div>
 
-        <BackToTop />
       </div>
     </section>
   );

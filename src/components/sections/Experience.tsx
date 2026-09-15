@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { experience } from "@/data/content";
-import BackToTop from "@/components/ui/BackToTop";
 
 export default function Experience() {
   return (
@@ -62,7 +61,6 @@ export default function Experience() {
           </ul>
         </div>
 
-        <BackToTop />
       </div>
     </section>
   );

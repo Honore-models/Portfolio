@@ -7,7 +7,6 @@ import * as THREE from "three";
 import { motion } from "motion/react";
 import { certifications } from "@/data/content";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import BackToTop from "@/components/ui/BackToTop";
 
 type Cert = (typeof certifications)[number];
 
@@ -312,7 +311,6 @@ export default function Certifications() {
           )}
         </div>
 
-        <BackToTop />
       </div>
     </section>
   );

@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import { ChevronDown, GripVertical, Info, Plus } from "lucide-react";
 import Image from "next/image";
 import { about } from "@/data/content";
-import BackToTop from "@/components/ui/BackToTop";
 
 /* Real logos mapped to each skill */
 const skillLogos: Record<string, string> = {
@@ -405,7 +404,6 @@ export default function About() {
           </div>
         </div>
 
-        <BackToTop />
       </div>
     </section>
   );

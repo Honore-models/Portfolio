@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { testimonials } from "@/data/content";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import BackToTop from "@/components/ui/BackToTop";
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
@@ -111,7 +110,6 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <BackToTop />
       </div>
     </section>
   );

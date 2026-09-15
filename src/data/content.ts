@@ -281,9 +281,9 @@ export const testimonials = [
   {
     id: 1,
     name: "Don Jesus",
-    role: "Head of AI, GreenEarth Labs",
+    role: "Blockchain Lead, ChainForge Labs",
     quote:
-      "Honore delivered ForestGuard with remarkable rigor. The model accuracy and production readiness exceeded our expectations and directly accelerated our conservation work.",
+      "Honore delivered our Web3 infrastructure with remarkable rigor — from audited smart contracts to on-chain data indexing, everything shipped secure, scalable, and ahead of schedule.",
     color: "#F59E0B",
   },
   {
