@@ -7,8 +7,8 @@ export const site = {
   tagline: "Building intelligent systems and scalable software solutions.",
   social: {
     github: "https://github.com/honore-models",
-    linkedin: "https://www.linkedin.com/in/niyogushimwa-honore-8427b339a/",
-    twitter: "https://x.com/NIYOGUSHIMWAHo1",
+    linkedin: "https://www.linkedin.com/in/niyogushimwa-honore-54833a437",
+    twitter: "https://x.com/h_onore",
     email: "honoreniyogushimwa63@gmail.com",
   },
 };
