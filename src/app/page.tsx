@@ -9,6 +9,7 @@ import EngineeringStack from "@/components/sections/EngineeringStack";
 import Projects from "@/components/sections/Projects";
 import Experience from "@/components/sections/Experience";
 import Testimonials from "@/components/sections/Testimonials";
+import GitHubActivity from "@/components/sections/GitHubActivity";
 
 const ConstellationBackground = dynamic(
   () => import("@/components/background/ConstellationBackground"),
@@ -30,6 +31,7 @@ export default function Home() {
         <About />
         <EngineeringStack />
         <Projects />
+        <GitHubActivity />
         <Experience />
         <Certifications />
         <Testimonials />
