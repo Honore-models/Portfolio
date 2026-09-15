@@ -2,18 +2,18 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
-import { Github, LoaderCircle } from "lucide-react";
+import { ExternalLink, Github, LoaderCircle } from "lucide-react";
 import { site } from "@/data/content";
 
 type Contribution = { date: string; count: number; level: number };
 type Activity = { username: string; total: number; year: string; contributions: Contribution[] };
 
 const levelClasses = [
-  "bg-cyan-950/70",
-  "bg-cyan-900/80",
-  "bg-cyan-700/90",
-  "bg-cyan-500",
-  "bg-cyan-300",
+  "border border-slate-600/80 bg-slate-700/70",
+  "border border-cyan-800 bg-cyan-900",
+  "border border-cyan-700 bg-cyan-700",
+  "border border-cyan-400/80 bg-cyan-500 shadow-[0_0_7px_rgba(34,211,238,0.28)]",
+  "border border-cyan-100/80 bg-cyan-200 shadow-[0_0_9px_rgba(103,232,249,0.5)]",
 ];
 
 function formatDate(date: string) {
@@ -98,8 +98,10 @@ export default function GitHubActivity() {
                 <p className="text-sm text-slate-400">{activity ? `${activity.total.toLocaleString()} contributions in ${selectedYear}` : `Fetching ${selectedYear} activity…`}</p>
               </div>
             </div>
-            <a href={site.social.github} target="_blank" rel="noreferrer" className="text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-100">
-              View profile ↗
+            <a href={site.social.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-2 text-sm font-medium text-cyan-200 transition-all hover:-translate-y-0.5 hover:border-cyan-300/60 hover:bg-cyan-400/20 hover:text-white">
+              <Github size={16} />
+              View GitHub profile
+              <ExternalLink size={14} aria-hidden="true" />
             </a>
           </div>
 
