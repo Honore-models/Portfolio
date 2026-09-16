@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
+import { FileText, Mail, MapPin } from "lucide-react";
 import SocialTooltip from "@/components/ui/SocialTooltip";
 import Logo from "@/components/ui/Logo";
 import { navLinks, services, site } from "@/data/content";
@@ -67,10 +67,23 @@ export default function Footer() {
               <Mail size={14} className="text-cyan-400" />
               {site.email}
             </a>
-            <p className="flex items-center gap-2 text-sm text-slate-400">
+            <p className="flex items-center gap-2 text-sm text-slate-400 mb-4">
               <MapPin size={14} className="text-violet-400" />
               {site.location}
             </p>
+            <a
+              href={site.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/5 px-4 py-2 text-sm font-semibold text-cyan-300 transition-all hover:border-cyan-300/60 hover:bg-cyan-400/15 hover:text-cyan-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+              aria-label="View my resume (opens in a new tab)"
+            >
+              <FileText
+                size={16}
+                className="transition-transform group-hover:scale-110"
+              />
+              View Resume
+            </a>
           </div>
 
           {/* Social */}

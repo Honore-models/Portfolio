@@ -5,6 +5,8 @@ export const site = {
   email: "honoreniyogushimwa63@gmail.com",
   location: "Kigali, Rwanda",
   tagline: "Building intelligent systems and scalable software solutions.",
+  resumeUrl:
+    "https://drive.google.com/file/d/1H05EQNZPTCgVUACM3EanWHpz6dDtHfgw/view?usp=drive_link",
   social: {
     github: "https://github.com/honore-models",
     linkedin: "https://www.linkedin.com/in/niyogushimwa-honore-54833a437",
