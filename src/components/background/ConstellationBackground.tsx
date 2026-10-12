@@ -14,6 +14,12 @@ const PARTICLE_COUNT = 220;
 const LINK_DIST = 95;
 const MOUSE_DIST = 150;
 const MOUSE_FORCE = 0.04;
+const LINK_DIST_SQ = LINK_DIST * LINK_DIST;
+const MOUSE_DIST_SQ = MOUSE_DIST * MOUSE_DIST;
+// Links are batched into a few alpha buckets so we stroke once per bucket
+// instead of once per line.
+const ALPHA_BUCKETS = 6;
+const SPRITE_SIZE = 32;
 
 export default function ConstellationBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,9 +36,35 @@ export default function ConstellationBackground() {
     let width = 0;
     let height = 0;
     let dpr = 1;
+    let running = false;
+    let resizeRaf = 0;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Pre-render the particle glow once; drawImage is far cheaper than
+    // building a radial gradient for every particle on every frame.
+    const sprite = document.createElement("canvas");
+    sprite.width = SPRITE_SIZE;
+    sprite.height = SPRITE_SIZE;
+    const sctx = sprite.getContext("2d");
+    if (sctx) {
+      const c = SPRITE_SIZE / 2;
+      const glow = sctx.createRadialGradient(c, c, 0, c, c, c);
+      glow.addColorStop(0, "rgba(160, 210, 235, 0.55)");
+      glow.addColorStop(0.4, "rgba(80, 150, 200, 0.18)");
+      glow.addColorStop(1, "rgba(80, 150, 200, 0)");
+      sctx.fillStyle = glow;
+      sctx.fillRect(0, 0, SPRITE_SIZE, SPRITE_SIZE);
+      sctx.beginPath();
+      sctx.fillStyle = "rgba(170, 210, 235, 0.75)";
+      sctx.arc(c, c, c / 3.2, 0, Math.PI * 2);
+      sctx.fill();
+    }
+
+    const buckets: number[][] = Array.from({ length: ALPHA_BUCKETS }, () => []);
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = Math.floor(width * dpr);
@@ -42,9 +74,9 @@ export default function ConstellationBackground() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const isMobile = width < 768;
-      const baseCount = isMobile ? 110 : PARTICLE_COUNT;
+      const baseCount = isMobile ? 70 : PARTICLE_COUNT;
       const count = Math.round(
-        baseCount * Math.min(1.35, Math.max(0.75, (width * height) / (1400 * 900)))
+        baseCount * Math.min(1.15, Math.max(0.75, (width * height) / (1400 * 900)))
       );
 
       if (particles.length === 0) {
@@ -121,83 +153,95 @@ export default function ConstellationBackground() {
         p.y = Math.min(height, Math.max(0, p.y));
       }
 
-      // Links between particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
+      // Links between particles (squared distances, batched strokes)
+      for (const b of buckets) b.length = 0;
+      const n = particles.length;
+      for (let i = 0; i < n; i++) {
+        const a = particles[i];
+        for (let j = i + 1; j < n; j++) {
           const b = particles[j];
           const dx = a.x - b.x;
+          if (dx > LINK_DIST || dx < -LINK_DIST) continue;
           const dy = a.y - b.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < LINK_DIST) {
-            const alpha = (1 - dist / LINK_DIST) * 0.28;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(100, 180, 220, ${alpha})`;
-            ctx.lineWidth = 0.7;
-            ctx.stroke();
+          if (dy > LINK_DIST || dy < -LINK_DIST) continue;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK_DIST_SQ) {
+            const t = 1 - Math.sqrt(d2) / LINK_DIST;
+            const k = Math.min(ALPHA_BUCKETS - 1, Math.floor(t * ALPHA_BUCKETS));
+            buckets[k].push(a.x, a.y, b.x, b.y);
           }
         }
+      }
+      ctx.lineWidth = 0.7;
+      for (let k = 0; k < ALPHA_BUCKETS; k++) {
+        const lines = buckets[k];
+        if (lines.length === 0) continue;
+        const alpha = ((k + 0.5) / ALPHA_BUCKETS) * 0.28;
+        ctx.strokeStyle = `rgba(100, 180, 220, ${alpha})`;
+        ctx.beginPath();
+        for (let m = 0; m < lines.length; m += 4) {
+          ctx.moveTo(lines[m], lines[m + 1]);
+          ctx.lineTo(lines[m + 2], lines[m + 3]);
+        }
+        ctx.stroke();
       }
 
       // Links from cursor to nearby particles
       if (mouseOn) {
+        ctx.lineWidth = 0.85;
         for (const p of particles) {
           const dx = mx - p.x;
           const dy = my - p.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < MOUSE_DIST) {
-            const alpha = (1 - dist / MOUSE_DIST) * 0.45;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < MOUSE_DIST_SQ) {
+            const alpha = (1 - Math.sqrt(d2) / MOUSE_DIST) * 0.45;
             ctx.beginPath();
             ctx.moveTo(mx, my);
             ctx.lineTo(p.x, p.y);
             ctx.strokeStyle = `rgba(56, 160, 210, ${alpha})`;
-            ctx.lineWidth = 0.85;
             ctx.stroke();
           }
         }
 
         // Cursor node
-        const glow = ctx.createRadialGradient(mx, my, 0, mx, my, 12);
-        glow.addColorStop(0, "rgba(160, 210, 240, 0.7)");
-        glow.addColorStop(0.4, "rgba(40, 120, 180, 0.25)");
-        glow.addColorStop(1, "rgba(40, 120, 180, 0)");
-        ctx.beginPath();
-        ctx.fillStyle = glow;
-        ctx.arc(mx, my, 12, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.fillStyle = "rgba(186, 230, 253, 0.85)";
-        ctx.arc(mx, my, 1.8, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.drawImage(sprite, mx - 12, my - 12, 24, 24);
       }
 
       // Particle nodes
       for (const p of particles) {
-        const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3.2);
-        glow.addColorStop(0, "rgba(160, 210, 235, 0.55)");
-        glow.addColorStop(0.4, "rgba(80, 150, 200, 0.18)");
-        glow.addColorStop(1, "rgba(80, 150, 200, 0)");
-        ctx.beginPath();
-        ctx.fillStyle = glow;
-        ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.fillStyle = "rgba(170, 210, 235, 0.75)";
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
+        const size = p.r * 6.4;
+        ctx.drawImage(sprite, p.x - size / 2, p.y - size / 2, size, size);
       }
 
+      if (!running) return;
       raf = requestAnimationFrame(draw);
+    };
+
+    const start = () => {
+      if (running || reducedMotion) return;
+      running = true;
+      raf = requestAnimationFrame(draw);
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(raf);
+    };
+    // Don't burn CPU/GPU while the tab is in the background.
+    const onVisibility = () => (document.hidden ? stop() : start());
+    const onResize = () => {
+      cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        resize();
+        if (!running) draw();
+      });
     };
 
     resize();
     draw();
+    start();
 
-    window.addEventListener("resize", resize);
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("resize", onResize);
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseleave", onLeave);
     window.addEventListener("touchstart", onTouch, { passive: true });
@@ -205,8 +249,10 @@ export default function ConstellationBackground() {
     window.addEventListener("touchend", onLeave);
 
     return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      stop();
+      cancelAnimationFrame(resizeRaf);
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("resize", onResize);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("touchstart", onTouch);

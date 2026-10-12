@@ -8,7 +8,7 @@ export default function Logo({ className = "w-10 h-10" }: { className?: string }
         alt="Honore NH logo"
         fill
         className="object-contain"
-        unoptimized
+        sizes="64px"
         priority
       />
     </span>

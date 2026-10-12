@@ -204,7 +204,7 @@ export const certifications = [
     year: "2026",
     color: "#00A4EF",
     accent: "#5CC8F5",
-    image: "/certificates/microsoft-azure-ai.png",
+    image: "/certificates/microsoft-azure-ai.webp",
     logo: "/logos/microsoft-linkedin.png",
   },
   {
@@ -214,7 +214,7 @@ export const certifications = [
     year: "2026",
     color: "#A51C30",
     accent: "#E05A6A",
-    image: "/certificates/cs50-ai.png",
+    image: "/certificates/cs50-ai.webp",
     logo: "/logos/harvard-cs50.png",
   },
   {
@@ -224,7 +224,7 @@ export const certifications = [
     year: "2026",
     color: "#0A0A23",
     accent: "#67E8F9",
-    image: "/certificates/freecodecamp-python.png",
+    image: "/certificates/freecodecamp-python.webp",
     logo: "/logos/freecodecamp-seal.png",
   },
   {
@@ -234,7 +234,7 @@ export const certifications = [
     year: "2026",
     color: "#E85D04",
     accent: "#F48C06",
-    image: "/certificates/usaii-finalist.png",
+    image: "/certificates/usaii-finalist.webp",
     logo: "/logos/usaii.png",
   },
   {
@@ -244,7 +244,7 @@ export const certifications = [
     year: "2026",
     color: "#38BDF8",
     accent: "#7DD3FC",
-    image: "/certificates/icsc.png",
+    image: "/certificates/icsc.webp",
     logo: "/logos/icsc.png",
   },
   {
@@ -254,7 +254,7 @@ export const certifications = [
     year: "2026",
     color: "#7C3AED",
     accent: "#A78BFA",
-    image: "/certificates/ilead.png",
+    image: "/certificates/ilead.webp",
     logo: "/logos/ilead.png",
   },
   {
@@ -264,7 +264,7 @@ export const certifications = [
     year: "2026",
     color: "#f35574",
     accent: "#f5cece",
-    image: "/certificates/Deeplearning.ai.png",
+    image: "/certificates/Deeplearning.ai.webp",
     logo: "/logos/deeplogo.png",
   },
   {
@@ -274,7 +274,7 @@ export const certifications = [
     year: "2026",
     color: "#2563EB",
     accent: "#60A5FA",
-    image: "/certificates/YIMO_Certificate.jpg",
+    image: "/certificates/YIMO_Certificate.webp",
     logo: "/logos/yimo.png",
   },
 ];

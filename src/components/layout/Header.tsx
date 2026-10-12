@@ -12,10 +12,13 @@ export default function Header() {
   const [active, setActive] = useState("#home");
 
   useEffect(() => {
-    const onScroll = () => {
+    const sections = navLinks.map((l) => l.href.slice(1)).reverse();
+    let ticking = false;
+    // Layout reads are batched to at most once per frame.
+    const update = () => {
+      ticking = false;
       setScrolled(window.scrollY > 40);
-      const sections = navLinks.map((l) => l.href.slice(1));
-      for (const id of [...sections].reverse()) {
+      for (const id of sections) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 120) {
           setActive(`#${id}`);
@@ -23,6 +26,12 @@ export default function Header() {
         }
       }
     };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -31,7 +40,7 @@ export default function Header() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#050b1a]/80 backdrop-blur-xl"
+          ? "bg-[#050b1a]/85 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >

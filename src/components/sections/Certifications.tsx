@@ -2,11 +2,12 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, Image, RoundedBox } from "@react-three/drei";
-import { Suspense, createContext, useContext, useRef, useState } from "react";
+import { Suspense, createContext, useContext, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { motion } from "motion/react";
 import { certifications } from "@/data/content";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useInView } from "@/hooks/useInView";
 
 type Cert = (typeof certifications)[number];
 
@@ -44,6 +45,7 @@ function CertCard({
   const { cardW, cardH, radius, showHtml, htmlWidth, distanceFactor } =
     useContext(CarouselConfigContext);
   const group = useRef<THREE.Group>(null);
+  const targetScale = useRef(new THREE.Vector3(1, 1, 1));
   const angle = (index / total) * Math.PI * 2;
   const x = Math.sin(angle) * radius;
   const z = Math.cos(angle) * radius;
@@ -51,7 +53,7 @@ function CertCard({
   useFrame(() => {
     if (!group.current) return;
     const target = active ? 1.1 : 1;
-    group.current.scale.lerp(new THREE.Vector3(target, target, target), 0.14);
+    group.current.scale.lerp(targetScale.current.setScalar(target), 0.14);
   });
 
   return (
@@ -76,17 +78,13 @@ function CertCard({
         />
       </mesh>
 
-      <RoundedBox args={[cardW, cardH, 0.08]} radius={0.14} smoothness={8}>
-        <meshPhysicalMaterial
+      <RoundedBox args={[cardW, cardH, 0.08]} radius={0.14} smoothness={4}>
+        <meshStandardMaterial
           color="#0b1730"
           transparent
-          opacity={0.72}
-          roughness={0.2}
-          metalness={0.25}
-          transmission={0.22}
-          thickness={0.5}
-          clearcoat={1}
-          clearcoatRoughness={0.15}
+          opacity={0.78}
+          roughness={0.25}
+          metalness={0.3}
         />
       </RoundedBox>
 
@@ -121,7 +119,7 @@ function CertCard({
             userSelect: "none",
           }}
         >
-          <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#07111fcc] px-2 py-1.5 backdrop-blur-md font-[family-name:var(--font-outfit)] shadow-lg">
+          <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#07111fee] px-2 py-1.5 font-[family-name:var(--font-outfit)] shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={cert.logo}
@@ -193,6 +191,13 @@ export default function Certifications() {
   const [slowed, setSlowed] = useState(false);
   const [hovered, setHovered] = useState<number | null>(null);
   const active = hovered !== null ? certifications[hovered] : null;
+  // Mount the WebGL scene shortly before it scrolls into view, and only
+  // render frames while it is actually visible.
+  const [stageRef, nearView] = useInView<HTMLDivElement>("400px 0px");
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    if (nearView) setMounted(true);
+  }, [nearView]);
 
   const config: CarouselConfig = isMobile
     ? {
@@ -236,6 +241,7 @@ export default function Certifications() {
         </motion.div>
 
         <div
+          ref={stageRef}
           className="relative h-[340px] xs:h-[380px] sm:h-[480px] md:h-[540px] lg:h-[600px] touch-pan-y"
           onPointerEnter={() => setSlowed(true)}
           onPointerLeave={() => {
@@ -245,31 +251,34 @@ export default function Certifications() {
         >
           <div className="pointer-events-none absolute inset-x-[10%] sm:inset-x-[18%] bottom-[12%] sm:bottom-[18%] h-16 sm:h-20 rounded-[100%] bg-cyan-400/10 blur-3xl" />
 
-          <CarouselConfigContext.Provider value={config}>
-            <Canvas
-              camera={camera}
-              dpr={isMobile ? [1, 1.25] : [1, 1.75]}
-              gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-            >
-              <ambientLight intensity={0.95} />
-              <spotLight
-                position={[4, 3, 8]}
-                angle={0.55}
-                penumbra={0.9}
-                intensity={2.2}
-                color="#9ae6ff"
-              />
-              <pointLight position={[-5, 1.5, 4]} intensity={1.3} color="#a855f7" />
-              <pointLight position={[3, 0.5, 6]} intensity={0.8} color="#38bdf8" />
-              <Suspense fallback={null}>
-                <CarouselRing
-                  slowed={slowed}
-                  hovered={hovered}
-                  setHovered={setHovered}
+          {mounted && (
+            <CarouselConfigContext.Provider value={config}>
+              <Canvas
+                camera={camera}
+                frameloop={nearView ? "always" : "never"}
+                dpr={isMobile ? [1, 1.25] : [1, 1.5]}
+                gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+              >
+                <ambientLight intensity={0.95} />
+                <spotLight
+                  position={[4, 3, 8]}
+                  angle={0.55}
+                  penumbra={0.9}
+                  intensity={2.2}
+                  color="#9ae6ff"
                 />
-              </Suspense>
-            </Canvas>
-          </CarouselConfigContext.Provider>
+                <pointLight position={[-5, 1.5, 4]} intensity={1.3} color="#a855f7" />
+                <pointLight position={[3, 0.5, 6]} intensity={0.8} color="#38bdf8" />
+                <Suspense fallback={null}>
+                  <CarouselRing
+                    slowed={slowed}
+                    hovered={hovered}
+                    setHovered={setHovered}
+                  />
+                </Suspense>
+              </Canvas>
+            </CarouselConfigContext.Provider>
+          )}
         </div>
 
         <div className="min-h-[88px] sm:min-h-[76px] -mt-4 sm:-mt-6 flex items-center justify-center px-2">

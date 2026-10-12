@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
+import SmoothScroll from "@/components/ui/SmoothScroll";
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
+  display: "swap",
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
@@ -13,9 +16,9 @@ export const metadata: Metadata = {
   description:
     "ML Engineer portfolio - building intelligent systems that learn and evolve. Specialized in Machine Learning, Deep Learning, and MLOps.",
   icons: {
-    icon: [{ url: "/honore_logo2.png", type: "image/png" }],
-    apple: "/honore_logo2.png",
-    shortcut: "/honore_logo2.png",
+    icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
+    apple: "/apple-icon.png",
+    shortcut: "/icon-192.png",
   },
 };
 
@@ -27,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="min-h-full font-sans text-foreground bg-deep">
+        <SmoothScroll />
         {children}
       </body>
     </html>

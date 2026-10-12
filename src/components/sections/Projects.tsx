@@ -202,7 +202,8 @@ export default function Projects() {
                             alt=""
                             fill
                             className="object-cover opacity-20 blur-2xl scale-110 pointer-events-none"
-                            unoptimized
+                            sizes="48px"
+                            quality={40}
                           />
                         )}
 
@@ -213,7 +214,7 @@ export default function Projects() {
                             alt={project.title}
                             fill
                             className="object-cover transition-transform duration-700 hover:scale-[1.04]"
-                            unoptimized
+                            sizes="320px"
                           />
                         )}
                       </div>
@@ -286,7 +287,7 @@ export default function Projects() {
                       alt={p.title}
                       fill
                       className="object-cover opacity-70"
-                      unoptimized
+                      sizes="(max-width: 640px) 50vw, 240px"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#040814]/80 to-transparent" />

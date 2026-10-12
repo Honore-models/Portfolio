@@ -40,6 +40,24 @@ html {
   overflow-x: hidden;
 }
 
+/* Lenis drives scrolling when active; native smooth-scroll would fight it. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   background: var(--bg-deep);
   color: var(--text-primary);
