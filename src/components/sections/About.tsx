@@ -15,11 +15,13 @@ const skillLogos: Record<string, string> = {
   FastAPI: "/logos/fastapi.svg",
   "Express JS": "/logos/express.svg",
   Django: "/logos/django.svg",
+  "Spring Boot": "/logos/spring_boot.svg",
   "Deep Learning": "/logos/pytorch.svg",
   NLP: "/logos/huggingface.svg",
 };
 
 const toolLogos = [
+  { name: "Git", src: "/logos/git.svg" },
   { name: "scikit-learn", src: "/logos/scikit-learn.svg" },
   { name: "Docker", src: "/logos/docker.svg" },
   { name: "Django", src: "/logos/django.svg" },

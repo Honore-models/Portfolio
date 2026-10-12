@@ -318,6 +318,7 @@ export const experience = [
   {
     role: "Independent AI / ML Developer",
     company: "Rwanda Coding Academy - Second Year",
+    logo: "/logos/rca.png",
     period: "2026 - Now",
     points: [
       "Designing and developing AI/ML solutions for real-world applications.",
@@ -330,6 +331,7 @@ export const experience = [
   {
     role: "AI & Machine Learning Student",
     company: "Rwanda Coding Academy - First Year",
+    logo: "/logos/rca.png",
     period: "2025 - 2026",
     points: [
       "Studying the mathematical and computational foundations of Machine Learning and Artificial Intelligence.",

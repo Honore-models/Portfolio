@@ -38,6 +38,7 @@ const techLogoMap: Record<string, string> = {
   "Tailwind CSS": "/logos/tailwindcss.svg",
   OpenAI:         "/logos/openai.svg",
   Qwen:           "/logos/qwen.svg",
+  "Gemma 4":      "/logos/gemma.svg",
   PyTorch:        "/logos/pytorch.svg",
   TensorFlow:     "/logos/tensorflow.svg",
   "scikit-learn": "/logos/scikit-learn.svg",

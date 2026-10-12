@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { experience } from "@/data/content";
 
 export default function Experience() {
@@ -45,7 +46,20 @@ export default function Experience() {
                   <div className="glass-panel rounded-2xl p-5 inline-block text-left w-full">
                     <p className="text-xs font-medium text-cyan-400 mb-1">{job.period}</p>
                     <h3 className="text-lg font-semibold text-white">{job.role}</h3>
-                    <p className="text-sm text-violet-300 mb-3">{job.company}</p>
+                    <div className="flex items-center gap-2.5 mb-3">
+                      {job.logo && (
+                        <span className="relative h-7 w-14 shrink-0">
+                          <Image
+                            src={job.logo}
+                            alt={job.company.split(" - ")[0]}
+                            fill
+                            sizes="56px"
+                            className="object-contain object-left"
+                          />
+                        </span>
+                      )}
+                      <p className="text-sm text-violet-300">{job.company}</p>
+                    </div>
                     <ul className="space-y-2">
                       {job.points.map((p) => (
                         <li key={p} className="text-sm text-slate-400 leading-relaxed">

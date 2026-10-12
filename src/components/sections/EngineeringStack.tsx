@@ -18,6 +18,7 @@ const logoMap: Record<string, string> = {
   SQL: "/logos/sql.svg",
   FastAPI: "/logos/fastapi.svg",
   "Express JS": "/logos/express.svg",
+  Java: "/logos/java.svg",
   Django: "/logos/django.svg",
   Docker: "/logos/docker.svg",
   "Spring Boot": "/logos/spring_boot.svg",
